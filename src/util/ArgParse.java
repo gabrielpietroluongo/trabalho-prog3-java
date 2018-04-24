@@ -73,17 +73,17 @@ public class ArgParse
 		this.fname_Atividades = o;	
 	}
 	
-	// TODO talvez refatorar essa função? - Possivelmente mover o carregamento de arquivos para CSVLoader.java :)
 	public void LoadData()
 	{
 		//Discentes
-		Vector<String[]> discentes_data = CSVLoader.load_data("C:\\\\Users\\\\gabri\\\\eclipse-workspace\\\\discentes.txt");
+		Vector<String[]> discentes_data = CSV.load_data("C:\\\\Users\\\\gabri\\\\eclipse-workspace\\\\discentes.txt");
 		for (String[] line : discentes_data)
 		{
 			this.systemData.Adiciona_Discente(new Discente(line[0], line[1], Integer.parseInt(line[2])));
 		}
+		
 		//Docentes
-		Vector<String[]> docentes_data = CSVLoader.load_data("C:\\\\Users\\\\gabri\\\\eclipse-workspace\\\\docentes.txt");
+		Vector<String[]> docentes_data = CSV.load_data("C:\\\\Users\\\\gabri\\\\eclipse-workspace\\\\docentes.txt");
 		for(String[] line : docentes_data)
 		{
 			this.systemData.Adiciona_Docente(new Docente(Integer.parseInt(line[0]), line[1], line[2]));

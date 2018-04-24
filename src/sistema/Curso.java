@@ -2,9 +2,9 @@ package sistema;
 
 public class Curso
 {
-	int codigo;
-	String nome;
-	boolean graduacao;
+	private final int codigo;
+	private String nome;
+	private boolean graduacao;
 	
 	public Curso(int codigo, String nome, String graduacao, String posGraduacao)
 	{
@@ -19,6 +19,12 @@ public class Curso
 		{
 			this.graduacao = false;
 		}
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Nome do curso: " + this.nome + "\nCódigo do curso: " + this.codigo + "\nÉ graduação: " + this.graduacao;
 	}
 	
 }

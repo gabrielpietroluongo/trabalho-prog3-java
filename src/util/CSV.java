@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Vector;
 
-public class CSVLoader
+public class CSV
 {
 	public static String[] parse(String data,String separator)
 	{
@@ -23,7 +23,7 @@ public class CSVLoader
 			while((line = br.readLine()) != null)
 			{
 				String [] line_data;
-				line_data = CSVLoader.parse(line, ";");
+				line_data = CSV.parse(line, ";");
 				lines.addElement(line_data);
 			}
 			br.close();
@@ -33,6 +33,12 @@ public class CSVLoader
 			e.printStackTrace();
 		}
 		return lines;
+	}
+	
+	// ??? talvez seja útil no futuro?
+	public static void save()
+	{
+		
 	}
 	
 }

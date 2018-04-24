@@ -22,7 +22,16 @@ public class Data
 	public void Adiciona_Discente(Discente d)
 	{
 		// TODO talvez checar se o docente ja existe no vetor?
-		Discentes.addElement(d);	
+		for (Discente discente : this.Discentes)
+		{
+			if(discente.equals(d))
+			{
+				System.out.println("Erro: O discente já existe");
+				return;
+				//throw();
+			}
+		}
+		Discentes.addElement(d);
 	}
 	
 	public void PrintaDiscentes()
@@ -31,6 +40,11 @@ public class Data
 		{
 			System.out.println(d);
 		}
+	}
+	
+	public static void AdicionaHorasAulaADocente(Disciplina d, int codigoDocente)
+	{
+		
 	}
 	
 }

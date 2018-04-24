@@ -7,6 +7,16 @@ public class Docente
 	private String nome;
 	private String departamento;
 	
+	// TODO implementar as variaveis abaixo
+	
+	int horasAulaSemanais = 0;
+	int horasAulaSemestrais = 0;
+	int horasOrientacaoSemanais = 0;
+	int horasOrientacaoSemestrais = 0;
+	int producoesQualificadas = 0;
+	int producoesNaoQualificadas = 0;
+	
+	
 	public Docente(int codigo, String nome, String departamento)
 	{
 		this.codigo = codigo;
