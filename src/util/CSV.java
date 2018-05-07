@@ -1,7 +1,6 @@
 package util;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Vector;
 
 public class CSV
@@ -35,10 +34,19 @@ public class CSV
 		return lines;
 	}
 	
-	// ??? talvez seja útil no futuro?
-	public static void save()
+	public static void save(String file, String[] data) throws IOException
 	{
-		
+		OutputStream os = new FileOutputStream(file);
+		OutputStreamWriter osw = new OutputStreamWriter(os);
+		BufferedWriter bw = new BufferedWriter(osw);
+		for (String s : data)
+		{
+			bw.write(s);
+			//Write separators, except if it is the last element
+			if(s != data[data.length])
+				bw.write(";");
+		}
+		bw.close();
 	}
 	
 }
