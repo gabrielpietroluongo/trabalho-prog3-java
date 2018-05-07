@@ -171,6 +171,30 @@ public class Dados
 	}
 	
 	/*
+	 * ORIENTAÇÕES GRADUAÇÃO
+	 */
+	
+	public void CarregaOrientacoesGrad(String path)
+	{
+		Vector<String[]> orientacoesData = CSV.load_data(path);
+		for (String[] line : orientacoesData)
+		{
+			AdicionaOrientacaoGrad(line);
+		}
+	}
+	
+	public void AdicionaOrientacaoGrad(String[] params)
+	{
+		AdicionaOrientacaoGrad(new OrientacaoGrad(Integer.parseInt(params[0]), params[1],
+							   Integer.parseInt(params[2]), Integer.parseInt(params[3])));
+	}
+	
+	public void AdicionaOrientacaoGrad(OrientacaoGrad o)
+	{
+		this.OrientacoesGrad.add(o);
+	}
+	
+	/*
 	 * UTILITÁRIOS
 	 */
 	
@@ -219,6 +243,15 @@ public class Dados
 		}
 	}
 	
+	public void PrintaOrientacoesGrad()
+	{
+		System.out.println("Orientações de Graduação:");
+		for (OrientacaoGrad o : OrientacoesGrad)
+		{
+			System.out.println(o);
+		}
+	}
+	
 	public void DEBUG()
 	{
 		PrintaDiscentes();
@@ -226,6 +259,7 @@ public class Dados
 		PrintaProducoes();
 		PrintaCursos();
 		PrintaDisciplinas();
+		PrintaOrientacoesGrad();
 	}
 	
 	//TODO

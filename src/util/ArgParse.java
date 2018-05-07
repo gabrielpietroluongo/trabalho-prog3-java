@@ -98,6 +98,7 @@ public class ArgParse
 		this.systemData.Carrega_Producoes(this.fname_Producoes);
 		this.systemData.Carrega_Cursos(this.fname_Cursos);
 		this.systemData.Carrega_Disciplinas(this.fname_Disciplinas);
+		this.systemData.CarregaOrientacoesGrad(this.fname_OriGrad);
 		this.systemData.DEBUG();
 	}
 	
