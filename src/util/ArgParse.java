@@ -15,7 +15,7 @@ public class ArgParse
 	final String fname_OriPosGrad;
 	
 	// Data from system
-	private Data systemData;
+	private Dados systemData;
 	
 	/*
 	* ArgParse -> Recebe de entrada os argumentos do programa e processa eles adequadamente,
@@ -23,7 +23,7 @@ public class ArgParse
 	*/
 	public ArgParse(String[] args)
 	{
-		this.systemData = new Data();
+		this.systemData = new Dados();
 		int curPos = 0;
 		String d = "";
 		String a = "";

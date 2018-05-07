@@ -5,7 +5,7 @@ import java.util.Vector;
 import util.CSV;
 
 
-public class Data
+public class Dados
 {
 	public Vector<Docente> Docentes = new Vector<Docente>();
 	public Vector<Discente> Discentes = new Vector<Discente>();
@@ -13,7 +13,7 @@ public class Data
 	public Vector<Curso> Cursos = new Vector<Curso>();
 	public Vector<Disciplina> Disciplinas = new Vector<Disciplina>();
 	
-	public Data()
+	public Dados()
 	{
 		
 	}
