@@ -2,10 +2,10 @@ package sistema;
 
 public class OrientacaoGrad 
 {
-	int codigoDocente;
-	String matriculaDiscente;
-	int codigoCurso;
-	int cargaHorariaSemanal;
+	private final int codigoDocente;
+	private final String matriculaDiscente;
+	private final int codigoCurso;
+	private final int cargaHorariaSemanal;
 	
 	public OrientacaoGrad(int codigoD, String mat, int codC, int horas)
 	{

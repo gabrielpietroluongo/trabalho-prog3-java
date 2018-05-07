@@ -296,11 +296,4 @@ public class Dados
 		PrintaOrientacoesGrad();
 		PrintaOrientacoesPos();
 	}
-	
-	//TODO
-	public static void AdicionaHorasAulaADocente(Disciplina d, int codigoDocente)
-	{
-		
-	}
-	
 }

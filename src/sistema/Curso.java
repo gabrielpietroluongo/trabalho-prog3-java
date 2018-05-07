@@ -3,8 +3,8 @@ package sistema;
 public class Curso
 {
 	private final int codigo;
-	private String nome;
-	private boolean graduacao;
+	private final String nome;
+	private final boolean graduacao;
 	
 	public Curso(int codigo, String nome, String graduacao, String posGraduacao)
 	{

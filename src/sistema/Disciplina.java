@@ -3,10 +3,10 @@ package sistema;
 public class Disciplina
 {
 	private final String codigoAlfa;
-	private String nome;
-	private int codigoDocente;
-	private int cargaHorariaSemanal;
-	private int cargaHorariaSemestral;
+	private final String nome;
+	private final int codigoDocente;
+	private final int cargaHorariaSemanal;
+	private final int cargaHorariaSemestral;
 	private final int codigoCurso;
 	
 	public Disciplina(String codigoAlfa, String nome, int codigoDocente, int cargaSemanal, int cargaSemestral, int codigo)

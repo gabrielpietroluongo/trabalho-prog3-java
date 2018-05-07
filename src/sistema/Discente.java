@@ -3,8 +3,8 @@ package sistema;
 public class Discente
 {
 	private final String matricula;
-	private String nome;
-	private int codigoCurso;
+	private final String nome;
+	private final int codigoCurso;
 	
 	public Discente(String matricula, String nome, int codigo)
 	{

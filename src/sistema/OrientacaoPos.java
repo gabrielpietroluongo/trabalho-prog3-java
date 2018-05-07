@@ -1,15 +1,14 @@
 package sistema;
 
 import java.util.Calendar;
-import java.util.Calendar.*;
 
 public class OrientacaoPos 
 {
-	int codigoDocente;
-	String matriculaDiscente;
-	Calendar dataIngresso;
-	String programa;
-	int cargaHoraria;
+	private final int codigoDocente;
+	private final String matriculaDiscente;
+	private final Calendar dataIngresso;
+	private final String programa;
+	private final int cargaHoraria;
 	
 	public OrientacaoPos(int codigoD, String mat, String data, String programa, int horas)
 	{

@@ -4,8 +4,8 @@ package sistema;
 public class Docente
 {
 	private final int codigo;
-	private String nome;
-	private String departamento;
+	private final String nome;
+	private final String departamento;
 	
 	// TODO implementar as variaveis abaixo
 	

@@ -4,7 +4,7 @@ public class Producao
 {
 	private final int codigo;
 	private final String titulo;
-	private boolean qualificada;
+	private final boolean qualificada;
 	
 	public Producao(int codigo, String titulo, String qualificada)
 	{
