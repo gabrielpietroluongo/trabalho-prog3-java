@@ -2,6 +2,8 @@ package main;
 
 import util.*;
 
+import sistema.*;
+
 public class Main
 {
 
@@ -9,8 +11,9 @@ public class Main
 	{
 		try
 		{
-			ArgParse a = new ArgParse(args);
-			a.LoadData();
+			Dados d = new Dados();
+			ArgParse.parse(args);
+			ArgParse.LoadData(d);
 		}
 		/*
 		catch(InvalidTeacherCodeException e)

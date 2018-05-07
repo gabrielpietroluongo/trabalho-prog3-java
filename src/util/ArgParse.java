@@ -2,28 +2,24 @@ package util;
 
 import sistema.*;
 
-public class ArgParse
+public abstract class ArgParse
 {
 	// Parsed arguments
-	final String fname_Discentes;
-	final String fname_Docentes;
-	final String fname_Producoes;
-	final String fname_Cursos;
-	final String fname_Disciplinas;
-	final String fname_Atividades;
-	final String fname_OriGrad;
-	final String fname_OriPosGrad;
-	
-	// Data from system
-	private Dados systemData;
+	static String fname_Discentes;
+	static String fname_Docentes;
+	static String fname_Producoes;
+	static String fname_Cursos;
+	static String fname_Disciplinas;
+	static String fname_Atividades;
+	static String fname_OriGrad;
+	static String fname_OriPosGrad;
 	
 	/*
 	* ArgParse -> Recebe de entrada os argumentos do programa e processa eles adequadamente,
 	* salvando as informações em uma instância da classe ArgParse.
 	*/
-	public ArgParse(String[] args)
+	public static void parse(String[] args)
 	{
-		this.systemData = new Dados();
 		int curPos = 0;
 		String d = "";
 		String a = "";
@@ -81,26 +77,26 @@ public class ArgParse
 			}
 		}
 		
-		this.fname_Docentes = d;
-		this.fname_Discentes = a;
-		this.fname_Producoes = p;
-		this.fname_Cursos = c;
-		this.fname_Disciplinas = r;
-		this.fname_Atividades = o;
-		this.fname_OriGrad = og;
-		this.fname_OriPosGrad = op;
+		fname_Docentes = d;
+		fname_Discentes = a;
+		fname_Producoes = p;
+		fname_Cursos = c;
+		fname_Disciplinas = r;
+		fname_Atividades = o;
+		fname_OriGrad = og;
+		fname_OriPosGrad = op;
 	}
 	
-	public void LoadData()
+	public static void LoadData(Dados d)
 	{
-		this.systemData.Carrega_Discentes(this.fname_Discentes);
-		this.systemData.Carrega_Docentes(this.fname_Docentes);
-		this.systemData.Carrega_Producoes(this.fname_Producoes);
-		this.systemData.Carrega_Cursos(this.fname_Cursos);
-		this.systemData.Carrega_Disciplinas(this.fname_Disciplinas);
-		this.systemData.CarregaOrientacoesGrad(this.fname_OriGrad);
-		this.systemData.CarregaOrientacoesPos(this.fname_OriPosGrad);
-		this.systemData.DEBUG();
+		d.Carrega_Discentes(fname_Discentes);
+		d.Carrega_Docentes(fname_Docentes);
+		d.Carrega_Producoes(fname_Producoes);
+		d.Carrega_Cursos(fname_Cursos);
+		d.Carrega_Disciplinas(fname_Disciplinas);
+		d.CarregaOrientacoesGrad(fname_OriGrad);
+		d.CarregaOrientacoesPos(fname_OriPosGrad);
+		d.DEBUG();
 	}
 	
 	
