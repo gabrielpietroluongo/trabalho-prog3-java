@@ -46,6 +46,25 @@ public class Dados
 		this.Adiciona_Docente(new Docente(Integer.parseInt(params[0]), params[1], params[2]));
 	}
 	
+	public Docente getDocenteById(int id)
+	{
+		for(Docente d : Docentes)
+		{
+			if(d.hasId(id))
+			{
+				return d;
+			}
+		}
+		System.out.println("Erro: Docente de id " + id + " não encontrado");
+		return null;
+	}
+	
+	public String getDocenteDepartamentoById(int id)
+	{
+		Docente d = getDocenteById(id);
+		return d.getDepartamento();
+	}
+	
 	/*
 	 * DISCENTES
 	 */

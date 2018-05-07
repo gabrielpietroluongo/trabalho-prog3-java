@@ -45,6 +45,13 @@ public class Docente
 		return ret;
 	}
 	
+	public boolean hasId(int id)
+	{
+		return this.codigo == id;
+	}
+	
+	public String getDepartamento() { return this.departamento; }
+	
 	//TODO dar override no .equals() dessa classe
 	
 }

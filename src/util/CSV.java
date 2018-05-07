@@ -3,7 +3,7 @@ package util;
 import java.io.*;
 import java.util.Vector;
 
-public class CSV
+public abstract class CSV
 {
 	public static String[] parse(String data,String separator)
 	{
