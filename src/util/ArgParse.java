@@ -76,6 +76,7 @@ public class ArgParse
 					System.out.println("TODO!");
 					break;
 				default:
+					System.out.println("ERRO: NOT FOUND!!!");
 					break;
 			}
 		}
@@ -92,11 +93,11 @@ public class ArgParse
 	
 	public void LoadData()
 	{
-		this.systemData.Carrega_Discentes("/dados/gpietro/trabalho_prog3/discentes.csv");
-		this.systemData.Carrega_Docentes("/dados/gpietro/trabalho_prog3/docentes.csv");
-		this.systemData.Carrega_Producoes("/dados/gpietro/trabalho_prog3/producoes.csv");
-		this.systemData.Carrega_Cursos("/dados/gpietro/trabalho_prog3/cursos.csv");
-		this.systemData.Carrega_Disciplinas("/dados/gpietro/trabalho_prog3/aulas.csv");
+		this.systemData.Carrega_Discentes(this.fname_Discentes);
+		this.systemData.Carrega_Docentes(this.fname_Docentes);
+		this.systemData.Carrega_Producoes(this.fname_Producoes);
+		this.systemData.Carrega_Cursos(this.fname_Cursos);
+		this.systemData.Carrega_Disciplinas(this.fname_Disciplinas);
 		this.systemData.DEBUG();
 	}
 	
