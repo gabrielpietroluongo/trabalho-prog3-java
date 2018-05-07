@@ -27,6 +27,4 @@ public class Disciplina
 				"\nCarga Horária Semanal: " + this.cargaHorariaSemanal + "\nCarga horária Semestral: " + this.cargaHorariaSemestral;
 	}
 	
-	public int getCodigoDocente() { return this.codigoDocente; }
-	
 }
