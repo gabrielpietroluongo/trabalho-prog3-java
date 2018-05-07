@@ -13,6 +13,10 @@ public class Dados
 	public Vector<Curso> Cursos = new Vector<Curso>();
 	public Vector<Disciplina> Disciplinas = new Vector<Disciplina>();
 	
+	
+	public Vector<OrientacaoGrad> OrientacoesGrad = new Vector<OrientacaoGrad>();
+	public Vector<OrientacaoPos> OrientacoesPos = new Vector<OrientacaoPos>();
+	
 	public Dados()
 	{
 		
