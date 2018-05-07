@@ -11,6 +11,8 @@ public class ArgParse
 	final String fname_Cursos;
 	final String fname_Disciplinas;
 	final String fname_Atividades;
+	final String fname_OriGrad;
+	final String fname_OriPosGrad;
 	
 	// Data from system
 	private Data systemData;
@@ -29,7 +31,8 @@ public class ArgParse
 		String c = "";
 		String r = "";
 		String o = "";
-		
+		String og = "";
+		String op = "";
 		while (curPos < args.length)
 		{
 			switch(args[curPos])
@@ -58,6 +61,20 @@ public class ArgParse
 					o = args[curPos + 1];
 					curPos += 2;
 					break;
+				case "-og":
+					og = args[curPos + 1];
+					curPos += 2;
+					break;
+				case "-op":
+					op = args[curPos + 1];
+					curPos += 2;
+					break;
+				case "--read-only":
+					System.out.println("TODO!");
+					break;
+				case "--write-only":
+					System.out.println("TODO!");
+					break;
 				default:
 					break;
 			}
@@ -69,6 +86,8 @@ public class ArgParse
 		this.fname_Cursos = c;
 		this.fname_Disciplinas = r;
 		this.fname_Atividades = o;
+		this.fname_OriGrad = og;
+		this.fname_OriPosGrad = op;
 	}
 	
 	public void LoadData()
