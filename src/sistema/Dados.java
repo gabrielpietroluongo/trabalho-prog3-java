@@ -1,5 +1,7 @@
 package sistema;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import util.CSV;
@@ -7,15 +9,13 @@ import util.CSV;
 
 public class Dados
 {
-	public Vector<Docente> Docentes = new Vector<Docente>();
-	public Vector<Discente> Discentes = new Vector<Discente>();
-	public Vector<Producao> Producoes = new Vector<Producao>();
-	public Vector<Curso> Cursos = new Vector<Curso>();
-	public Vector<Disciplina> Disciplinas = new Vector<Disciplina>();
-	
-	
-	public Vector<OrientacaoGrad> OrientacoesGrad = new Vector<OrientacaoGrad>();
-	public Vector<OrientacaoPos> OrientacoesPos = new Vector<OrientacaoPos>();
+	public List<Docente> Docentes = new ArrayList<Docente>();
+	public List<Discente> Discentes = new ArrayList<Discente>();
+	public List<Producao> Producoes = new ArrayList<Producao>();
+	public List<Curso> Cursos = new ArrayList<Curso>();
+	public List<Disciplina> Disciplinas = new ArrayList<Disciplina>();
+	public List<OrientacaoGrad> OrientacoesGrad = new ArrayList<OrientacaoGrad>();
+	public List<OrientacaoPos> OrientacoesPos = new ArrayList<OrientacaoPos>();
 	
 	public Dados()
 	{
@@ -38,7 +38,7 @@ public class Dados
 	public void Adiciona_Docente(Docente d)
 	{
 		// TODO talvez checar se o docente ja existe no vetor?
-		Docentes.addElement(d);
+		Docentes.add(d);
 	}
 	
 	public void Adiciona_Docente(String[] params)
@@ -89,12 +89,12 @@ public class Dados
 				//TODO throw();
 			}
 		}
-		Discentes.addElement(d);
+		Discentes.add(d);
 	}
 	
 	public void Adiciona_Discente(String[] params)
 	{
-		this.Discentes.addElement(new Discente(params[0], params[1], Integer.parseInt(params[2])));
+		this.Discentes.add(new Discente(params[0], params[1], Integer.parseInt(params[2])));
 	}
 	
 	/*
@@ -112,18 +112,18 @@ public class Dados
 	
 	public void Adiciona_Producao(Producao p)
 	{
-		Producoes.addElement(p);
+		Producoes.add(p);
 	}
 	
 	public void Adiciona_Producao(String[] params)
 	{
 		if(params.length == 3)
 		{
-			Producoes.addElement(new Producao(Integer.parseInt(params[0]), params[1], params[2]));
+			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], params[2]));
 		}
 		else
 		{
-			Producoes.addElement(new Producao(Integer.parseInt(params[0]), params[1], false));
+			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], false));
 		}
 	}
 	
@@ -133,7 +133,7 @@ public class Dados
 	
 	public void Adiciona_Curso(Curso c)
 	{
-		this.Cursos.addElement(c);
+		this.Cursos.add(c);
 	}
 	
 	public void Adiciona_Curso(String[] params)
@@ -181,10 +181,6 @@ public class Dados
 		Vector<String[]> disciplinas_data = CSV.load_data(path);
 		for (String[] line : disciplinas_data)
 		{
-			for (String x : line)
-			{
-				System.out.println(x);
-			}
 			this.Adiciona_Disciplina(line);
 		}
 	}
@@ -307,12 +303,19 @@ public class Dados
 	
 	public void DEBUG()
 	{
+		System.out.println("\n\n");
 		PrintaDiscentes();
+		System.out.println("\n\n");
 		PrintaDocentes();
+		System.out.println("\n\n");
 		PrintaProducoes();
+		System.out.println("\n\n");
 		PrintaCursos();
+		System.out.println("\n\n");
 		PrintaDisciplinas();
+		System.out.println("\n\n");
 		PrintaOrientacoesGrad();
+		System.out.println("\n\n");
 		PrintaOrientacoesPos();
 	}
 }
