@@ -98,13 +98,16 @@ public class Dados
 	
 	public void Adiciona_Producao(String[] params)
 	{
-		if(params.length == 3)
+		Docente d = this.getDocenteById(Integer.parseInt(params[0]));
+		if(params.length == 3 && !params[2].equals(" "))
 		{
 			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], params[2]));
+			d.adicionaProducaoQualificada();
 		}
 		else
 		{
 			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], false));
+			d.adicionaProducaoNaoQualificada();
 		}
 	}
 	

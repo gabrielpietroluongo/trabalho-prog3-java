@@ -8,10 +8,7 @@ public class Docente
 	private final String departamento;
 	int horasAulaSemanais = 0;
 	int horasAulaSemestrais = 0;
-	int horasOrientacaoSemanais = 0;
-
-	// TODO implementar as variaveis abaixo
-	
+	int horasOrientacaoSemanais = 0;	
 	int producoesQualificadas = 0;
 	int producoesNaoQualificadas = 0;
 	
@@ -60,6 +57,10 @@ public class Docente
 	public void adicionaHorasAulaSemestrais(int valor) { this.horasAulaSemestrais += valor; }
 	
 	public void adicionaHorasOrientacao(int valor) { this.horasOrientacaoSemanais += valor; }
+	
+	public void adicionaProducaoQualificada() { this.producoesQualificadas++; }
+	
+	public void adicionaProducaoNaoQualificada() { this.producoesNaoQualificadas++; }
 	
 	//TODO dar override no .equals() dessa classe
 	
