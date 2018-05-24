@@ -6,12 +6,12 @@ public class Docente
 	private final int codigo;
 	private final String nome;
 	private final String departamento;
-	
-	// TODO implementar as variaveis abaixo
-	
 	int horasAulaSemanais = 0;
 	int horasAulaSemestrais = 0;
 	int horasOrientacaoSemanais = 0;
+
+	// TODO implementar as variaveis abaixo
+	
 	int producoesQualificadas = 0;
 	int producoesNaoQualificadas = 0;
 	
@@ -28,7 +28,10 @@ public class Docente
 	@Override
 	public String toString()
 	{
-		return "Nome: " + this.nome + "\nCódigo: " + this.codigo + "\nDepartamento: " + this.departamento;
+		return "Nome: " + this.nome + "\nCódigo: " + this.codigo + "\nDepartamento: " + this.departamento + "\nHoras-Aula Semanais: "
+				+ this.horasAulaSemanais + "\nHoras-Aula Semestrais: " + this.horasAulaSemestrais + "\nHoras de orientação Semanais: "
+				+ this.horasOrientacaoSemanais + "\nProduções qualificadas: " + this.producoesQualificadas + "\nProduções não qualificadas:"
+				+ this.producoesNaoQualificadas;
 	}
 	
 	//PAD
@@ -51,6 +54,12 @@ public class Docente
 	}
 	
 	public String getDepartamento() { return this.departamento; }
+	
+	public void adicionaHorasAulaSemanais(int valor) { this.horasAulaSemanais += valor; }
+	
+	public void adicionaHorasAulaSemestrais(int valor) { this.horasAulaSemestrais += valor; }
+	
+	public void adicionaHorasOrientacao(int valor) { this.horasOrientacaoSemanais += valor; }
 	
 	//TODO dar override no .equals() dessa classe
 	

@@ -46,25 +46,6 @@ public class Dados
 		this.Adiciona_Docente(new Docente(Integer.parseInt(params[0]), params[1], params[2]));
 	}
 	
-	public Docente getDocenteById(int id)
-	{
-		for(Docente d : Docentes)
-		{
-			if(d.hasId(id))
-			{
-				return d;
-			}
-		}
-		System.out.println("Erro: Docente de id " + id + " não encontrado");
-		return null;
-	}
-	
-	public String getDocenteDepartamentoById(int id)
-	{
-		Docente d = getDocenteById(id);
-		return d.getDepartamento();
-	}
-	
 	/*
 	 * DISCENTES
 	 */
@@ -163,17 +144,29 @@ public class Dados
 	
 	public void Adiciona_Disciplina(Disciplina d)
 	{
-		//TODO: adicionar as horas-aula ao professor relacionado à disciplina
 		this.Disciplinas.add(d);
 	}
 	
 	public void Adiciona_Disciplina(String[] params)
 	{
+		/*
+		 * Params:
+		 * 0 - String codigoAlfa
+		 * 1 - String nome
+		 * 2 - int codigoDocente
+		 * 3 - int cargaSemanal
+		 * 4 - int cargaSemestral
+		 * 5 - int codigo
+		 */
 		this.Adiciona_Disciplina(new Disciplina(params[0], params[1],
 								Integer.parseInt(params[2]), 
 								Integer.parseInt(params[3]), 
 								Integer.parseInt(params[4]), 
 								Integer.parseInt(params[5])));
+		Docente d =  getDocenteById(Integer.parseInt(params[2]));
+		d.adicionaHorasAulaSemanais(Integer.parseInt(params[3]));
+		d.adicionaHorasAulaSemestrais(Integer.parseInt(params[4]));
+		
 	}
 	
 	public void Carrega_Disciplinas(String path)
@@ -200,8 +193,18 @@ public class Dados
 	
 	public void AdicionaOrientacaoGrad(String[] params)
 	{
+		/*
+		 * Params:
+		 * 0 - int codigoDocente
+		 * 1 - String matricula
+		 * 2 - int codigoCurso
+		 * 3 - int horas
+		 */
 		AdicionaOrientacaoGrad(new OrientacaoGrad(Integer.parseInt(params[0]), params[1],
 							   Integer.parseInt(params[2]), Integer.parseInt(params[3])));
+		Docente d = getDocenteById(Integer.parseInt(params[0]));
+		d.adicionaHorasOrientacao(Integer.parseInt(params[3]));
+		
 	}
 	
 	public void AdicionaOrientacaoGrad(OrientacaoGrad o)
@@ -224,8 +227,18 @@ public class Dados
 	
 	public void AdicionaOrientacaoPos(String[] params)
 	{
+		/*
+		 * Params:
+		 * 0 - int codigoDocente
+		 * 1 - String matricula
+		 * 2 - String data
+		 * 3 - String programa
+		 * 4 - int horas
+		 */
 		AdicionaOrientacaoPos(new OrientacaoPos(Integer.parseInt(params[0]), params[1], params[2],
 							  params[3], Integer.parseInt(params[4])));
+		Docente d = getDocenteById(Integer.parseInt(params[0]));
+		d.adicionaHorasOrientacao(Integer.parseInt(params[4]));
 	}
 	
 	public void AdicionaOrientacaoPos(OrientacaoPos o)
@@ -299,6 +312,25 @@ public class Dados
 		{
 			System.out.println(o);
 		}
+	}
+	
+	public Docente getDocenteById(int id)
+	{
+		for(Docente d : Docentes)
+		{
+			if(d.hasId(id))
+			{
+				return d;
+			}
+		}
+		System.out.println("Erro: Docente de id " + id + " não encontrado");
+		return null;
+	}
+	
+	public String getDocenteDepartamentoById(int id)
+	{
+		Docente d = getDocenteById(id);
+		return d.getDepartamento();
 	}
 	
 	public void DEBUG()
