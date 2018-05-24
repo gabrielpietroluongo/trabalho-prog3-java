@@ -1,7 +1,9 @@
 package sistema;
 
+import java.text.Collator;
+import java.util.Locale;
 
-public class Docente
+public class Docente implements Comparable<Docente>
 {
 	private final int codigo;
 	private final String nome;
@@ -61,6 +63,13 @@ public class Docente
 	public void adicionaProducaoQualificada() { this.producoesQualificadas++; }
 	
 	public void adicionaProducaoNaoQualificada() { this.producoesNaoQualificadas++; }
+
+	@Override
+	public int compareTo(Docente d) {
+		Collator coll = Collator.getInstance(new Locale("pt", "BR"));
+		coll.setStrength(Collator.IDENTICAL);
+		return coll.compare(this.nome, d.nome);
+	}
 	
 	//TODO dar override no .equals() dessa classe
 	
