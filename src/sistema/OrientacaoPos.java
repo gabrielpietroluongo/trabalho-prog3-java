@@ -26,7 +26,7 @@ public class OrientacaoPos implements Comparable<OrientacaoPos>
 		this.nomeDiscente = nomeDiscente;
 		String[] datas = data.split("/");
 		Calendar c = Calendar.getInstance();
-		c.set(Integer.parseInt(datas[2]), Integer.parseInt(datas[1]), 
+		c.set(Integer.parseInt(datas[2]), Integer.parseInt(datas[1])-1, 
 						 Integer.parseInt(datas[0]));
 		this.dataIngresso = c.getTime();
 	}

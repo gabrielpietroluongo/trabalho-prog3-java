@@ -34,7 +34,6 @@ public class Dados
 	
 	public void gera_rha_e_salva() throws IOException
 	{
-		Collections.sort(this.Cursos);
 	}
 	
 	public void gera_alocacao_e_salva() throws IOException
