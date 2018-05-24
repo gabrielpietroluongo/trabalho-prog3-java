@@ -1,6 +1,8 @@
 package sistema;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -16,6 +18,17 @@ public class Dados
 	public List<Disciplina> Disciplinas = new ArrayList<Disciplina>();
 	public List<OrientacaoGrad> OrientacoesGrad = new ArrayList<OrientacaoGrad>();
 	public List<OrientacaoPos> OrientacoesPos = new ArrayList<OrientacaoPos>();
+	
+	public void gera_pad_e_salva() throws IOException
+	{
+		Collections.sort(this.Docentes);
+		CSV.setOutputFile("1-pad.csv");
+		for (Docente d : Docentes)
+		{
+			CSV.save(d.getCSVData());
+		}
+		CSV.closeOutputFile();
+	}
 	
 	public Dados()
 	{
