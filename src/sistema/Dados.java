@@ -161,7 +161,7 @@ public class Dados
 	 * DISCIPLINAS
 	 */
 	
-	public void Adicina_Disciplina(Disciplina d)
+	public void Adiciona_Disciplina(Disciplina d)
 	{
 		//TODO: adicionar as horas-aula ao professor relacionado à disciplina
 		this.Disciplinas.add(d);
@@ -169,7 +169,7 @@ public class Dados
 	
 	public void Adiciona_Disciplina(String[] params)
 	{
-		this.Adicina_Disciplina(new Disciplina(params[0], params[1],
+		this.Adiciona_Disciplina(new Disciplina(params[0], params[1],
 								Integer.parseInt(params[2]), 
 								Integer.parseInt(params[3]), 
 								Integer.parseInt(params[4]), 
