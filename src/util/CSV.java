@@ -5,6 +5,26 @@ import java.util.Vector;
 
 public abstract class CSV
 {
+	private static OutputStream os;
+	private static OutputStreamWriter ow;
+	private static BufferedWriter bw;
+	
+	private static boolean allowStreamOpening = true;
+	
+	public static void setOutputFile(String path) throws IOException
+	{
+		if(!allowStreamOpening) return;
+		os = new FileOutputStream(path);
+		ow = new OutputStreamWriter(os);
+		bw = new BufferedWriter(ow);
+	}
+	
+	public static void closeOutputFile() throws IOException
+	{
+		os.close();
+		return;
+	}
+	
 	public static String[] parse(String data,String separator)
 	{
 		String[] parsedData;
@@ -38,9 +58,6 @@ public abstract class CSV
 	
 	public static void save(String file, String[] data) throws IOException
 	{
-		OutputStream os = new FileOutputStream(file);
-		OutputStreamWriter osw = new OutputStreamWriter(os);
-		BufferedWriter bw = new BufferedWriter(osw);
 		for (String s : data)
 		{
 			bw.write(s);
@@ -48,7 +65,6 @@ public abstract class CSV
 			if(s != data[data.length])
 				bw.write(";");
 		}
-		bw.close();
 	}
 	
 }
