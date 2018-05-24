@@ -49,6 +49,18 @@ public class Dados
 		CSV.closeOutputFile();
 	}
 	
+	public void gera_ppg_e_salva() throws IOException
+	{
+		Collections.sort(this.OrientacoesPos);
+		CSV.setOutputFile("4-ppg.csv");
+		CSV.save(new String[] {"Nome do Programa", "Data de Ingresso", "Matrícula", "Nome"});
+		for (OrientacaoPos o : OrientacoesPos)
+		{
+			CSV.save(o.getCSVData());
+		}
+		CSV.closeOutputFile();
+	}
+	
 	public Dados()
 	{
 		
@@ -271,10 +283,11 @@ public class Dados
 		 * 3 - String programa
 		 * 4 - int horas
 		 */
+		Discente dis = getDiscenteByMat(params[1]);
+		Docente doc = getDocenteById(Integer.parseInt(params[0]));
 		AdicionaOrientacaoPos(new OrientacaoPos(Integer.parseInt(params[0]), params[1], params[2],
-							  params[3], Integer.parseInt(params[4])));
-		Docente d = getDocenteById(Integer.parseInt(params[0]));
-		d.adicionaHorasOrientacao(Integer.parseInt(params[4]));
+							  params[3], Integer.parseInt(params[4]), dis.getNome()));
+		doc.adicionaHorasOrientacao(Integer.parseInt(params[4]));
 	}
 	
 	public void AdicionaOrientacaoPos(OrientacaoPos o)
@@ -348,6 +361,19 @@ public class Dados
 		{
 			System.out.println(o);
 		}
+	}
+	
+	public Discente getDiscenteByMat(String mat)
+	{
+		for(Discente d : Discentes)
+		{
+			if(d.getMat().equals(mat))
+			{
+				return d;
+			}
+		}
+		System.out.println("Erro: Discente de matrícula" + mat + "não encontrado");
+		return null;
 	}
 	
 	public Docente getDocenteById(int id)

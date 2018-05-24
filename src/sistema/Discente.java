@@ -25,5 +25,9 @@ public class Discente
 		Discente d = (Discente) o;
 		return d.matricula == this.matricula;
 	}
+	
+	public String getMat() { return this.matricula; }
+	
+	public String getNome() { return this.nome; }
 		
 }
