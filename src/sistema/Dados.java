@@ -202,15 +202,17 @@ public class Dados
 		 * 2 - int codigoDocente
 		 * 3 - int cargaSemanal
 		 * 4 - int cargaSemestral
-		 * 5 - int codigo
+		 * 5 - int codigo (do curso)
 		 */
 		Docente d =  getDocenteById(Integer.parseInt(params[2]));
+		Curso c = getCursoById(Integer.parseInt(params[5]));
 		this.Adiciona_Disciplina(new Disciplina(params[0], params[1],
 								Integer.parseInt(params[2]), 
 								Integer.parseInt(params[3]), 
 								Integer.parseInt(params[4]), 
 								Integer.parseInt(params[5]),
 								d.getNome()));
+		c.adicionaHorasADocente(Integer.parseInt(params[2]), Integer.parseInt(params[4]));
 		d.adicionaHorasAulaSemanais(Integer.parseInt(params[3]));
 		d.adicionaHorasAulaSemestrais(Integer.parseInt(params[4]));
 		
@@ -392,6 +394,18 @@ public class Dados
 	{
 		Docente d = getDocenteById(id);
 		return d.getDepartamento();
+	}
+	
+	public Curso getCursoById(int codigo)
+	{
+		for (Curso c : Cursos)
+		{
+			if(c.getCodigo() == codigo)
+			{
+				return c;
+			}
+		}
+		return null;
 	}
 	
 	public void DEBUG()
