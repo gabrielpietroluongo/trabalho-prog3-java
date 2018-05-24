@@ -57,4 +57,9 @@ public class Disciplina implements Comparable<Disciplina>
 		return cmp;
 	}
 	
+	@Override
+	public boolean equals(Object o)
+	{
+		return this.codigoAlfa.equals(((Disciplina)o).codigoAlfa);
+	}
 }

@@ -2,6 +2,8 @@ package main;
 
 import util.*;
 
+import java.io.IOException;
+
 import sistema.*;
 
 public class Main
@@ -20,12 +22,21 @@ public class Main
 			d.gera_ppg_e_salva();
 			System.out.println("Execução bem sucedida");
 		}
+		catch(IOException e)
+		{
+			System.out.println("Erro de I/O");
+		}
+		catch(NumberFormatException e)
+		{
+			System.out.println("Erro de formatação");
+		}
 		catch(Exception e)
 		{
 			System.out.println("UNHANDLED EXCEPTION CAUGHT!");
 			e.printStackTrace();
 			System.out.println("Execução com falha");
 		}
+
 	}
 
 }

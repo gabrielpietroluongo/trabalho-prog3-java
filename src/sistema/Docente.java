@@ -73,6 +73,10 @@ public class Docente implements Comparable<Docente>
 		return coll.compare(this.nome, d.nome);
 	}
 	
-	//TODO dar override no .equals() dessa classe
+	@Override
+	public boolean equals(Object o)
+	{
+		return this.codigo == ((Docente)o).codigo;
+	}
 	
 }

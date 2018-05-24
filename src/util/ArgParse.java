@@ -96,7 +96,7 @@ public abstract class ArgParse
 		d.Carrega_Disciplinas(fname_Disciplinas);
 		d.CarregaOrientacoesGrad(fname_OriGrad);
 		d.CarregaOrientacoesPos(fname_OriPosGrad);
-		d.DEBUG();
+		//d.DEBUG();
 	}
 	
 	

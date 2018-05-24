@@ -161,7 +161,11 @@ public class Dados
 	
 	public void Adiciona_Docente(Docente d)
 	{
-		// TODO talvez checar se o docente ja existe no vetor?
+		if(this.Docentes.contains(d))
+		{
+			//TODO implementar uma exceção apropriada para isso
+			throw new NullPointerException("Docente repetido");
+		}
 		Docentes.add(d);
 	}
 	
@@ -185,14 +189,10 @@ public class Dados
 	
 	public void Adiciona_Discente(Discente d)
 	{
-		for (Discente discente : this.Discentes)
+		if(this.Discentes.contains(d))
 		{
-			if(discente.equals(d))
-			{
-				System.out.println("Erro: O discente já existe");
-				return;
-				//TODO throw();
-			}
+			//TODO implementar uma exceção apropriada para isso
+			throw new NullPointerException("Discente repetido");
 		}
 		Discentes.add(d);
 	}
@@ -241,6 +241,11 @@ public class Dados
 	
 	public void Adiciona_Curso(Curso c)
 	{
+		if(this.Cursos.contains(c))
+		{
+			//TODO implementar uma exceção apropriada para isso
+			throw new NullPointerException("Curso repetido");
+		}
 		this.Cursos.add(c);
 	}
 	
@@ -271,6 +276,11 @@ public class Dados
 	
 	public void Adiciona_Disciplina(Disciplina d)
 	{
+		if(this.Disciplinas.contains(d))
+		{
+			//TODO implementar uma exceção apropriada para isso
+			throw new NullPointerException("Disciplina repetida");
+		}
 		this.Disciplinas.add(d);
 	}
 	
@@ -286,6 +296,11 @@ public class Dados
 		 * 5 - int codigo (do curso)
 		 */
 		Docente d =  getDocenteById(Integer.parseInt(params[2]));
+		if (d == null)
+		{
+			//TODO implementar uma exceção apropriada pra isso
+			throw new NullPointerException("Codigo docente inválido");
+		}
 		Curso c = getCursoById(Integer.parseInt(params[5]));
 		this.Adiciona_Disciplina(new Disciplina(params[0], params[1],
 								Integer.parseInt(params[2]), 
