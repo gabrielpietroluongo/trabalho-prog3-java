@@ -14,16 +14,14 @@ public class Main
 			Dados d = new Dados();
 			ArgParse.parse(args);
 			ArgParse.LoadData(d);
+			d.gera_pad_e_salva();
+			System.out.println("Execução bem sucedida");
 		}
-		/*
-		catch(InvalidTeacherCodeException e)
-		{
-			System.out.println(e);
-		}*/
 		catch(Exception e)
 		{
 			System.out.println("UNHANDLED EXCEPTION CAUGHT!");
 			e.printStackTrace();
+			System.out.println("Execução com falha");
 		}
 	}
 
