@@ -34,6 +34,29 @@ public class Dados
 	
 	public void gera_rha_e_salva() throws IOException
 	{
+		CSV.setOutputFile("2-rha.csv");
+		List<String[]> CSVOut = new ArrayList<String[]>();
+		for(Curso c : Cursos)
+		{
+			int[][] mapData = c.getMapData();
+			for (int[] id : mapData)
+			{
+				String[] out_append = new String[5];
+				System.out.println(id[0]);
+				Docente d = getDocenteById(id[0]);
+				out_append[0] = d.getDepartamento();
+				out_append[1] = d.getNome();
+				out_append[2] = String.valueOf(c.getCodigo());
+				out_append[3] = c.getNome();
+				out_append[4] = String.valueOf(id[1]);
+				CSVOut.add(out_append);
+			}
+		}
+		for (String[] s : CSVOut)
+		{
+			CSV.save(s);
+		}
+		CSV.closeOutputFile();
 	}
 	
 	public void gera_alocacao_e_salva() throws IOException

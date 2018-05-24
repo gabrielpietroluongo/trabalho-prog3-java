@@ -14,6 +14,8 @@ public class Curso
 	
 	public int getCodigo() { return this.codigo; }
 	
+	public String getNome() { return this.nome; }
+	
 	public Curso(int codigo, String nome, String graduacao, String posGraduacao)
 	{
 		this.codigo = codigo;
@@ -45,6 +47,12 @@ public class Curso
 	
 	public void adicionaHorasADocente(int codigoDocente, int horas)
 	{
+		if(codigoDocente == 0)
+		{
+			int i = 0;
+			i ++;
+			int j = i;
+		}
 		if (this.MapaDocenteTotalHoras.containsKey(codigoDocente))
 		{
 			this.MapaDocenteTotalHoras.put(codigoDocente, this.MapaDocenteTotalHoras.get(codigoDocente) + horas);
@@ -53,6 +61,20 @@ public class Curso
 		{
 			this.MapaDocenteTotalHoras.put(codigoDocente, horas);
 		}
+	}
+	
+	public int[][] getMapData()
+	{
+		int mapSize = MapaDocenteTotalHoras.keySet().size();
+		int[][] ret = new int[mapSize][2];
+		int iterator = -1;
+		for(Integer key : this.MapaDocenteTotalHoras.keySet())
+		{
+			iterator++;
+			ret[iterator][0] = key;
+			ret[iterator][1] = MapaDocenteTotalHoras.get(key);
+		}
+		return ret;
 	}
 	
 }
