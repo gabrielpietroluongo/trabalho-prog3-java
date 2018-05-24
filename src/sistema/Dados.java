@@ -1,9 +1,11 @@
 package sistema;
 
 import java.io.IOException;
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 import util.CSV;
@@ -34,31 +36,87 @@ public class Dados
 	
 	public void gera_rha_e_salva() throws IOException
 	{
+		// Classe auxiliar para organizar (ordenar) as saídas
+		class OutputData implements Comparable<OutputData>
+		{
+			/*
+			 * Data:
+			 * 0 - Nome do departamento
+			 * 1 - Nome do docente
+			 * 2 - Código do curso
+			 * 3 - Nome do curso
+			 * 4 - Total de horas-aula semestrais
+			 */
+			String[] data;
+			
+			public OutputData(String[] d)
+			{
+				this.data = d;
+			}
+			
+			public String[] getCSVData()
+			{
+				return new String[] {
+						data[0],
+						data[1],
+						data[2],
+						data[3],
+						data[4]
+				};
+			}
+			
+			@Override
+			public int compareTo(OutputData arg0)
+			{
+				/*
+				 * Ordem de sorting (crescente):
+				 * 1 - Departamento
+				 * 2 - Nome docente
+				 * 3 - Nome curso
+				 */
+				Collator coll = Collator.getInstance(new Locale("pt", "BR"));
+				coll.setStrength(Collator.IDENTICAL);
+				int cmp = coll.compare(this.data[0], arg0.data[0]);
+				if(cmp == 0)
+				{
+					cmp = coll.compare(this.data[1], arg0.data[1]);
+					if(cmp == 0)
+					{
+						return coll.compare(this.data[3], arg0.data[3]);
+					}
+					return cmp;
+				}
+				return cmp;
+			}
+			
+		}
+		
 		CSV.setOutputFile("2-rha.csv");
-		List<String[]> CSVOut = new ArrayList<String[]>();
+		CSV.save(new String[] {"Departamento", "Docente", "Cód. Curso", "Curso", "Horas Semestrais Aula"});
+		List<OutputData> outData = new ArrayList<OutputData>();
 		for(Curso c : Cursos)
 		{
 			int[][] mapData = c.getMapData();
 			for (int[] id : mapData)
 			{
 				String[] out_append = new String[5];
-				System.out.println(id[0]);
 				Docente d = getDocenteById(id[0]);
 				out_append[0] = d.getDepartamento();
 				out_append[1] = d.getNome();
 				out_append[2] = String.valueOf(c.getCodigo());
 				out_append[3] = c.getNome();
 				out_append[4] = String.valueOf(id[1]);
-				CSVOut.add(out_append);
+				outData.add(new OutputData(out_append));
 			}
 		}
-		for (String[] s : CSVOut)
+		Collections.sort(outData);
+		for (OutputData o: outData)
 		{
-			CSV.save(s);
+			CSV.save(o.getCSVData());
 		}
 		CSV.closeOutputFile();
 	}
-	
+
 	public void gera_alocacao_e_salva() throws IOException
 	{
 		Collections.sort(this.Disciplinas);

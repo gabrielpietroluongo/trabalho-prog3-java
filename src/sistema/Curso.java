@@ -47,12 +47,6 @@ public class Curso
 	
 	public void adicionaHorasADocente(int codigoDocente, int horas)
 	{
-		if(codigoDocente == 0)
-		{
-			int i = 0;
-			i ++;
-			int j = i;
-		}
 		if (this.MapaDocenteTotalHoras.containsKey(codigoDocente))
 		{
 			this.MapaDocenteTotalHoras.put(codigoDocente, this.MapaDocenteTotalHoras.get(codigoDocente) + horas);
