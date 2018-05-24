@@ -32,6 +32,23 @@ public class Dados
 		CSV.closeOutputFile();
 	}
 	
+	public void gera_rha_e_salva() throws IOException
+	{
+		Collections.sort(this.Cursos);
+	}
+	
+	public void gera_alocacao_e_salva() throws IOException
+	{
+		Collections.sort(this.Disciplinas);
+		CSV.setOutputFile("3-alocacao.csv");
+		CSV.save(new String[] {"Docente", "Código", "Nome", "Carga Horária Semestral"});
+		for (Disciplina d : Disciplinas)
+		{
+			CSV.save(d.getCSVData());
+		}
+		CSV.closeOutputFile();
+	}
+	
 	public Dados()
 	{
 		
@@ -176,12 +193,13 @@ public class Dados
 		 * 4 - int cargaSemestral
 		 * 5 - int codigo
 		 */
+		Docente d =  getDocenteById(Integer.parseInt(params[2]));
 		this.Adiciona_Disciplina(new Disciplina(params[0], params[1],
 								Integer.parseInt(params[2]), 
 								Integer.parseInt(params[3]), 
 								Integer.parseInt(params[4]), 
-								Integer.parseInt(params[5])));
-		Docente d =  getDocenteById(Integer.parseInt(params[2]));
+								Integer.parseInt(params[5]),
+								d.getNome()));
 		d.adicionaHorasAulaSemanais(Integer.parseInt(params[3]));
 		d.adicionaHorasAulaSemestrais(Integer.parseInt(params[4]));
 		

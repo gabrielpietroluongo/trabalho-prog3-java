@@ -15,6 +15,7 @@ public class Main
 			ArgParse.parse(args);
 			ArgParse.LoadData(d);
 			d.gera_pad_e_salva();
+			d.gera_alocacao_e_salva();
 			System.out.println("Execução bem sucedida");
 		}
 		catch(Exception e)

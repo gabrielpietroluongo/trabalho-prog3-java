@@ -54,6 +54,8 @@ public class Docente implements Comparable<Docente>
 	
 	public String getDepartamento() { return this.departamento; }
 	
+	public String getNome() { return this.nome; }
+	
 	public void adicionaHorasAulaSemanais(int valor) { this.horasAulaSemanais += valor; }
 	
 	public void adicionaHorasAulaSemestrais(int valor) { this.horasAulaSemestrais += valor; }
