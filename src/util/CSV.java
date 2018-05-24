@@ -4,24 +4,21 @@ import java.io.*;
 import java.util.Vector;
 
 public abstract class CSV
-{
-	private static OutputStream os;
-	private static OutputStreamWriter ow;
-	private static BufferedWriter bw;
+{	
+	private static Writer wr;
 	
 	private static boolean allowStreamOpening = true;
 	
 	public static void setOutputFile(String path) throws IOException
 	{
 		if(!allowStreamOpening) return;
-		os = new FileOutputStream(path);
-		ow = new OutputStreamWriter(os);
-		bw = new BufferedWriter(ow);
+		wr = new FileWriter(path);
 	}
 	
 	public static void closeOutputFile() throws IOException
 	{
-		os.close();
+		wr.flush();
+		wr.close();
 		return;
 	}
 	
@@ -56,14 +53,16 @@ public abstract class CSV
 		return lines;
 	}
 	
-	public static void save(String file, String[] data) throws IOException
+	public static void save(String[] data) throws IOException
 	{
 		for (String s : data)
 		{
-			bw.write(s);
+			wr.write(s);
 			//Write separators, except if it is the last element
-			if(s != data[data.length])
-				bw.write(";");
+			if(s != data[data.length-1])
+				wr.write(";");
+			else
+				wr.write("\n");
 		}
 	}
 	
