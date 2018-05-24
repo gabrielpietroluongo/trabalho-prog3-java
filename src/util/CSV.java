@@ -19,6 +19,8 @@ public abstract class CSV
 		{
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String line;
+			// Pula a 1ª linha do csv
+			br.readLine();
 			while((line = br.readLine()) != null)
 			{
 				String [] line_data;
