@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import sistema.*;
 
+import exceptions.InvalidCodeException;
+
 public class Main
 {
 
@@ -21,6 +23,10 @@ public class Main
 			d.gera_alocacao_e_salva();
 			d.gera_ppg_e_salva();
 			System.out.println("Execução bem sucedida");
+		}
+		catch(InvalidCodeException e)
+		{
+			System.out.println(e);
 		}
 		catch(IOException e)
 		{

@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import util.CSV;
 
+import exceptions.*;
 
 public class Dados
 {
@@ -274,17 +275,16 @@ public class Dados
 	 * DISCIPLINAS
 	 */
 	
-	public void Adiciona_Disciplina(Disciplina d)
+	public void Adiciona_Disciplina(Disciplina d) throws InvalidCodeException
 	{
 		if(this.Disciplinas.contains(d))
 		{
-			//TODO implementar uma exceção apropriada para isso
-			throw new NullPointerException("Disciplina repetida");
+			throw new InvalidCodeException(InvalidCodeException.Tipo.DISCIPLINA, d.getCodigo());
 		}
 		this.Disciplinas.add(d);
 	}
 	
-	public void Adiciona_Disciplina(String[] params)
+	public void Adiciona_Disciplina(String[] params) throws InvalidCodeException
 	{
 		/*
 		 * Params:
@@ -298,8 +298,7 @@ public class Dados
 		Docente d =  getDocenteById(Integer.parseInt(params[2]));
 		if (d == null)
 		{
-			//TODO implementar uma exceção apropriada pra isso
-			throw new NullPointerException("Codigo docente inválido");
+			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE, params[2]);
 		}
 		Curso c = getCursoById(Integer.parseInt(params[5]));
 		this.Adiciona_Disciplina(new Disciplina(params[0], params[1],
@@ -314,7 +313,7 @@ public class Dados
 		
 	}
 	
-	public void Carrega_Disciplinas(String path)
+	public void Carrega_Disciplinas(String path) throws InvalidCodeException
 	{
 		Vector<String[]> disciplinas_data = CSV.load_data(path);
 		for (String[] line : disciplinas_data)

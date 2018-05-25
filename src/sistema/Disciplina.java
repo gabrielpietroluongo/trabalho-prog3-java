@@ -62,4 +62,7 @@ public class Disciplina implements Comparable<Disciplina>
 	{
 		return this.codigoAlfa.equals(((Disciplina)o).codigoAlfa);
 	}
+	
+	public String getCodigo() { return this.codigoAlfa; }
+	
 }

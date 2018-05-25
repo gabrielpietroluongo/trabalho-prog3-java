@@ -1,5 +1,6 @@
 package util;
 
+import exceptions.InvalidCodeException;
 import sistema.*;
 
 public abstract class ArgParse
@@ -87,7 +88,7 @@ public abstract class ArgParse
 		fname_OriPosGrad = op;
 	}
 	
-	public static void LoadData(Dados d)
+	public static void LoadData(Dados d) throws InvalidCodeException
 	{
 		d.Carrega_Discentes(fname_Discentes);
 		d.Carrega_Docentes(fname_Docentes);
