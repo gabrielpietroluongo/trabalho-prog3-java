@@ -28,6 +28,7 @@ public class Main
 			{
 				d = (Dados) Serialization.loadData("dados.dat");
 			}
+			ArgParse.LoadData(d);
 			d.gera_pad_e_salva();
 			d.gera_rha_e_salva();
 			d.gera_alocacao_e_salva();

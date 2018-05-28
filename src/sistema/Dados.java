@@ -151,7 +151,7 @@ public class Dados
 	 * DOCENTES
 	 */
 	
-	public void Carrega_Docentes(String path)
+	public void Carrega_Docentes(String path) throws IOException
 	{
 		Vector<String[]> docentes_data = CSV.load_data(path);
 		for (String[] line : docentes_data)
@@ -179,7 +179,7 @@ public class Dados
 	 * DISCENTES
 	 */
 	
-	public void Carrega_Discentes(String path)
+	public void Carrega_Discentes(String path) throws IOException
 	{
 		Vector<String[]> discentes_data = CSV.load_data(path);
 		for (String[] line : discentes_data)
@@ -207,7 +207,7 @@ public class Dados
 	 * PRODUÇÕES
 	 */
 	
-	public void Carrega_Producoes(String path)
+	public void Carrega_Producoes(String path) throws IOException
 	{
 		Vector<String[]> producoes_data = CSV.load_data(path);
 		for(String[] line : producoes_data)
@@ -262,7 +262,7 @@ public class Dados
 		}
 	}
 	
-	public void Carrega_Cursos(String path)
+	public void Carrega_Cursos(String path) throws IOException
 	{
 		Vector<String[]> cursos_data = CSV.load_data(path);
 		for (String[] line : cursos_data)
@@ -313,7 +313,7 @@ public class Dados
 		
 	}
 	
-	public void Carrega_Disciplinas(String path) throws InvalidCodeException
+	public void Carrega_Disciplinas(String path) throws InvalidCodeException, IOException
 	{
 		Vector<String[]> disciplinas_data = CSV.load_data(path);
 		for (String[] line : disciplinas_data)
@@ -326,7 +326,7 @@ public class Dados
 	 * ORIENTAÇÕES GRADUAÇÃO
 	 */
 	
-	public void CarregaOrientacoesGrad(String path)
+	public void CarregaOrientacoesGrad(String path) throws IOException
 	{
 		Vector<String[]> orientacoesData = CSV.load_data(path);
 		for (String[] line : orientacoesData)
@@ -360,7 +360,7 @@ public class Dados
 	 * ORIENTAÇÕES PÓS GRADUAÇÃO
 	 */
 	
-	public void CarregaOrientacoesPos(String path)
+	public void CarregaOrientacoesPos(String path) throws IOException
 	{
 		Vector<String[]> orientacoesData = CSV.load_data(path);
 		for (String[] line : orientacoesData)

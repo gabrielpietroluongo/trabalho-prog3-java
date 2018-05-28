@@ -29,27 +29,20 @@ public abstract class CSV
 		return parsedData;
 	}
 	
-	public static Vector<String[]> load_data(String file)
+	public static Vector<String[]> load_data(String file) throws IOException
 	{
 		Vector<String[]> lines = new Vector<String[]>();
-		try
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		String line;
+		// Pula a 1ª linha do csv
+		br.readLine();
+		while((line = br.readLine()) != null)
 		{
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			String line;
-			// Pula a 1ª linha do csv
-			br.readLine();
-			while((line = br.readLine()) != null)
-			{
-				String [] line_data;
-				line_data = CSV.parse(line, ";");
-				lines.addElement(line_data);
-			}
-			br.close();
+			String [] line_data;
+			line_data = CSV.parse(line, ";");
+			lines.addElement(line_data);
 		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		br.close();
 		return lines;
 	}
 	
