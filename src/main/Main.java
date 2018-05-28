@@ -17,16 +17,22 @@ public class Main
 		{
 			Dados d = new Dados();
 			ArgParse.parse(args);
-			if(ArgParse.bWriteOnly)
+			if(ArgParse.bReadOnly)
 			{
 				ArgParse.LoadData(d);
 				Serialization.saveData("dados.dat", d);
 				System.out.println("Serialização bem sucedida");
 				return;
 			}
-			else if(ArgParse.bReadOnly)
+			else if(ArgParse.bWriteOnly)
 			{
 				d = (Dados) Serialization.loadData("dados.dat");
+				d.gera_pad_e_salva();
+				d.gera_rha_e_salva();
+				d.gera_alocacao_e_salva();
+				d.gera_ppg_e_salva();
+				System.out.println("Execução bem sucedida");
+				return;
 			}
 			ArgParse.LoadData(d);
 			d.gera_pad_e_salva();
