@@ -1,13 +1,18 @@
 package sistema;
 
+import java.io.Serializable;
 import java.text.Collator;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class OrientacaoPos implements Comparable<OrientacaoPos>
+public class OrientacaoPos implements Comparable<OrientacaoPos>, Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final int codigoDocente;
 	private final String matriculaDiscente;
 	private final Date dataIngresso;

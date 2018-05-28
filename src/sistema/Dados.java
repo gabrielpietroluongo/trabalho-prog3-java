@@ -1,6 +1,7 @@
 package sistema;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,8 +13,12 @@ import util.CSV;
 
 import exceptions.*;
 
-public class Dados
+public class Dados implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public List<Docente> Docentes = new ArrayList<Docente>();
 	public List<Discente> Discentes = new ArrayList<Discente>();
 	public List<Producao> Producoes = new ArrayList<Producao>();

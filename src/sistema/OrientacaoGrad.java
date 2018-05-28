@@ -1,7 +1,13 @@
 package sistema;
 
-public class OrientacaoGrad 
+import java.io.Serializable;
+
+public class OrientacaoGrad implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final int codigoDocente;
 	private final String matriculaDiscente;
 	private final int codigoCurso;

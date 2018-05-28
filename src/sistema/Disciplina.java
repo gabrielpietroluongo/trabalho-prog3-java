@@ -1,10 +1,15 @@
 package sistema;
 
+import java.io.Serializable;
 import java.text.Collator;
 import java.util.Locale;
 
-public class Disciplina implements Comparable<Disciplina>
+public class Disciplina implements Comparable<Disciplina>, Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final String codigoAlfa;
 	private final String nome;
 	private final int codigoDocente;

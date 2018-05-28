@@ -1,10 +1,15 @@
 package sistema;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Curso
+public class Curso implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final int codigo;
 	private final String nome;
 	private final boolean graduacao;

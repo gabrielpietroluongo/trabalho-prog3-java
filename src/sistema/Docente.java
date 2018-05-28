@@ -1,10 +1,15 @@
 package sistema;
 
+import java.io.Serializable;
 import java.text.Collator;
 import java.util.Locale;
 
-public class Docente implements Comparable<Docente>
+public class Docente implements Comparable<Docente>, Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final int codigo;
 	private final String nome;
 	private final String departamento;

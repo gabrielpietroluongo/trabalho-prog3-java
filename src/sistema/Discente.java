@@ -1,7 +1,13 @@
 package sistema;
 
-public class Discente
+import java.io.Serializable;
+
+public class Discente implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final String matricula;
 	private final String nome;
 	private final int codigoCurso;

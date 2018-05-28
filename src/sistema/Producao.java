@@ -1,7 +1,13 @@
 package sistema;
 
-public class Producao
+import java.io.Serializable;
+
+public class Producao implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final int codigo;
 	private final String titulo;
 	private final boolean qualificada;
