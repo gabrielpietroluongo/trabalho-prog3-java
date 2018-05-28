@@ -11,7 +11,6 @@ public abstract class ArgParse
 	static String fname_Producoes;
 	static String fname_Cursos;
 	static String fname_Disciplinas;
-	static String fname_Atividades;
 	static String fname_OriGrad;
 	static String fname_OriPosGrad;
 	
@@ -31,7 +30,6 @@ public abstract class ArgParse
 		String p = "";
 		String c = "";
 		String r = "";
-		String o = "";
 		String og = "";
 		String op = "";
 		while (curPos < args.length)
@@ -56,10 +54,6 @@ public abstract class ArgParse
 					break;
 				case "-r":
 					r = args[curPos + 1];
-					curPos += 2;
-					break;
-				case "-o":
-					o = args[curPos + 1];
 					curPos += 2;
 					break;
 				case "-og":
@@ -87,7 +81,6 @@ public abstract class ArgParse
 		fname_Producoes = p;
 		fname_Cursos = c;
 		fname_Disciplinas = r;
-		fname_Atividades = o;
 		fname_OriGrad = og;
 		fname_OriPosGrad = op;
 	}
