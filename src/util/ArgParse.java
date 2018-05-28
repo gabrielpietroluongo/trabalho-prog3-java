@@ -68,9 +68,11 @@ public abstract class ArgParse
 					break;
 				case "--read-only":
 					bReadOnly = true;
+					curPos++;
 					break;
 				case "--write-only":
 					bWriteOnly = true;
+					curPos++;
 					break;
 				default:
 					System.out.println("ERRO: NOT FOUND!!!");
