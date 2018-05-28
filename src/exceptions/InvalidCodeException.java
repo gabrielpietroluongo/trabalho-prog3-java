@@ -19,6 +19,7 @@ public class InvalidCodeException extends Exception
 	public InvalidCodeException(Tipo t, String code)
 	{
 		String msg = "";
+		this.tipo = t;
 		switch(this.tipo)
 		{
 			case DOCENTE:
