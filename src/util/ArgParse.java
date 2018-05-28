@@ -15,6 +15,10 @@ public abstract class ArgParse
 	static String fname_OriGrad;
 	static String fname_OriPosGrad;
 	
+	public static boolean bWriteOnly = false;
+	
+	public static boolean bReadOnly = false;
+	
 	/*
 	* ArgParse -> Recebe de entrada os argumentos do programa e processa eles adequadamente,
 	* salvando as informações em uma instância da classe ArgParse.
@@ -67,10 +71,10 @@ public abstract class ArgParse
 					curPos += 2;
 					break;
 				case "--read-only":
-					System.out.println("TODO!");
+					bReadOnly = true;
 					break;
 				case "--write-only":
-					System.out.println("TODO!");
+					bWriteOnly = true;
 					break;
 				default:
 					System.out.println("ERRO: NOT FOUND!!!");
@@ -97,7 +101,6 @@ public abstract class ArgParse
 		d.Carrega_Disciplinas(fname_Disciplinas);
 		d.CarregaOrientacoesGrad(fname_OriGrad);
 		d.CarregaOrientacoesPos(fname_OriPosGrad);
-		//d.DEBUG();
 	}
 	
 	

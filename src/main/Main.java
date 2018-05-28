@@ -17,7 +17,17 @@ public class Main
 		{
 			Dados d = new Dados();
 			ArgParse.parse(args);
-			ArgParse.LoadData(d);
+			if(ArgParse.bWriteOnly)
+			{
+				ArgParse.LoadData(d);
+				Serialization.saveData("dados.dat", d);
+				System.out.println("Serialização bem sucedida");
+				return;
+			}
+			else if(ArgParse.bReadOnly)
+			{
+				d = (Dados) Serialization.loadData("dados.dat");
+			}
 			d.gera_pad_e_salva();
 			d.gera_rha_e_salva();
 			d.gera_alocacao_e_salva();
