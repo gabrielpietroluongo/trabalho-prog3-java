@@ -5,7 +5,7 @@ import util.*;
 import java.io.IOException;
 
 import sistema.*;
-
+import exceptions.InvalidCodeException;
 import exceptions.RepeatedCodeException;
 
 public class Main
@@ -42,6 +42,10 @@ public class Main
 			System.out.println("Execução bem sucedida");
 		}
 		catch(RepeatedCodeException e)
+		{
+			System.out.println(e);
+		}
+		catch(InvalidCodeException e)
 		{
 			System.out.println(e);
 		}
