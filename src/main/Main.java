@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import sistema.*;
 
-import exceptions.InvalidCodeException;
+import exceptions.RepeatedCodeException;
 
 public class Main
 {
@@ -41,7 +41,7 @@ public class Main
 			d.gera_ppg_e_salva();
 			System.out.println("Execução bem sucedida");
 		}
-		catch(InvalidCodeException e)
+		catch(RepeatedCodeException e)
 		{
 			System.out.println(e);
 		}

@@ -1,6 +1,6 @@
 package exceptions;
 
-public class InvalidCodeException extends Exception 
+public class RepeatedCodeException extends Exception 
 {
 	public enum Tipo
 	{
@@ -16,7 +16,7 @@ public class InvalidCodeException extends Exception
 
 	private Tipo tipo;
 	
-	public InvalidCodeException(Tipo t, String code)
+	public RepeatedCodeException(Tipo t, String code)
 	{
 		String msg = "";
 		this.tipo = t;

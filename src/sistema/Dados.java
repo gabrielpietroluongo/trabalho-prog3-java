@@ -156,7 +156,7 @@ public class Dados implements Serializable
 	 * DOCENTES
 	 */
 	
-	public void Carrega_Docentes(String path) throws IOException, NumberFormatException, InvalidCodeException
+	public void Carrega_Docentes(String path) throws IOException, NumberFormatException, RepeatedCodeException
 	{
 		Vector<String[]> docentes_data = CSV.load_data(path);
 		for (String[] line : docentes_data)
@@ -165,17 +165,16 @@ public class Dados implements Serializable
 		}
 	}
 	
-	public void Adiciona_Docente(Docente d) throws InvalidCodeException
+	public void Adiciona_Docente(Docente d) throws RepeatedCodeException
 	{
 		if(this.Docentes.contains(d))
 		{
-
-			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE, String.valueOf(d.getCodigo()));
+			throw new RepeatedCodeException(RepeatedCodeException.Tipo.DOCENTE, String.valueOf(d.getCodigo()));
 		}
 		Docentes.add(d);
 	}
 	
-	public void Adiciona_Docente(String[] params) throws NumberFormatException, InvalidCodeException
+	public void Adiciona_Docente(String[] params) throws NumberFormatException, RepeatedCodeException
 	{
 		this.Adiciona_Docente(new Docente(Integer.parseInt(params[0]), params[1], params[2]));
 	}
@@ -184,7 +183,7 @@ public class Dados implements Serializable
 	 * DISCENTES
 	 */
 	
-	public void Carrega_Discentes(String path) throws IOException, NumberFormatException, InvalidCodeException
+	public void Carrega_Discentes(String path) throws IOException, NumberFormatException, RepeatedCodeException
 	{
 		Vector<String[]> discentes_data = CSV.load_data(path);
 		for (String[] line : discentes_data)
@@ -193,16 +192,16 @@ public class Dados implements Serializable
 		}
 	}
 	
-	public void Adiciona_Discente(Discente d) throws InvalidCodeException
+	public void Adiciona_Discente(Discente d) throws RepeatedCodeException
 	{
 		if(this.Discentes.contains(d))
 		{
-			throw new InvalidCodeException(InvalidCodeException.Tipo.DISCENTE, d.getMat());
+			throw new RepeatedCodeException(RepeatedCodeException.Tipo.DISCENTE, d.getMat());
 		}
 		Discentes.add(d);
 	}
 	
-	public void Adiciona_Discente(String[] params) throws NumberFormatException, InvalidCodeException
+	public void Adiciona_Discente(String[] params) throws NumberFormatException, RepeatedCodeException
 	{
 		Adiciona_Discente(new Discente(params[0], params[1], Integer.parseInt(params[2])));
 	}
@@ -244,16 +243,16 @@ public class Dados implements Serializable
 	 * CURSOS
 	 */
 	
-	public void Adiciona_Curso(Curso c) throws InvalidCodeException
+	public void Adiciona_Curso(Curso c) throws RepeatedCodeException
 	{
 		if(this.Cursos.contains(c))
 		{
-			throw new InvalidCodeException(InvalidCodeException.Tipo.CURSO, String.valueOf(c.getCodigo()));
+			throw new RepeatedCodeException(RepeatedCodeException.Tipo.CURSO, String.valueOf(c.getCodigo()));
 		}
 		this.Cursos.add(c);
 	}
 	
-	public void Adiciona_Curso(String[] params) throws NumberFormatException, InvalidCodeException
+	public void Adiciona_Curso(String[] params) throws NumberFormatException, RepeatedCodeException
 	{
 		if(params.length == 3)
 		{
@@ -265,7 +264,7 @@ public class Dados implements Serializable
 		}
 	}
 	
-	public void Carrega_Cursos(String path) throws IOException, NumberFormatException, InvalidCodeException
+	public void Carrega_Cursos(String path) throws IOException, NumberFormatException, RepeatedCodeException
 	{
 		Vector<String[]> cursos_data = CSV.load_data(path);
 		for (String[] line : cursos_data)
@@ -278,16 +277,16 @@ public class Dados implements Serializable
 	 * DISCIPLINAS
 	 */
 	
-	public void Adiciona_Disciplina(Disciplina d) throws InvalidCodeException
+	public void Adiciona_Disciplina(Disciplina d) throws RepeatedCodeException
 	{
 		if(this.Disciplinas.contains(d))
 		{
-			throw new InvalidCodeException(InvalidCodeException.Tipo.DISCIPLINA, d.getCodigo());
+			throw new RepeatedCodeException(RepeatedCodeException.Tipo.DISCIPLINA, d.getCodigo());
 		}
 		this.Disciplinas.add(d);
 	}
 	
-	public void Adiciona_Disciplina(String[] params) throws InvalidCodeException
+	public void Adiciona_Disciplina(String[] params) throws RepeatedCodeException
 	{
 		/*
 		 * Params:
@@ -301,7 +300,7 @@ public class Dados implements Serializable
 		Docente d =  getDocenteById(Integer.parseInt(params[2]));
 		if (d == null)
 		{
-			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE, params[2]);
+			throw new RepeatedCodeException(RepeatedCodeException.Tipo.DOCENTE, params[2]);
 		}
 		Curso c = getCursoById(Integer.parseInt(params[5]));
 		this.Adiciona_Disciplina(new Disciplina(params[0], params[1],
@@ -316,7 +315,7 @@ public class Dados implements Serializable
 		
 	}
 	
-	public void Carrega_Disciplinas(String path) throws InvalidCodeException, IOException
+	public void Carrega_Disciplinas(String path) throws RepeatedCodeException, IOException
 	{
 		Vector<String[]> disciplinas_data = CSV.load_data(path);
 		for (String[] line : disciplinas_data)
