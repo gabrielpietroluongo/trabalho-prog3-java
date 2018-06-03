@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import exceptions.InvalidDateException;
+
 public class OrientacaoPos implements Comparable<OrientacaoPos>, Serializable
 {
 	/**
@@ -22,7 +24,7 @@ public class OrientacaoPos implements Comparable<OrientacaoPos>, Serializable
 	
 	private static final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
 	
-	public OrientacaoPos(int codigoD, String mat, String data, String programa, int horas, String nomeDiscente)
+	public OrientacaoPos(int codigoD, String mat, String data, String programa, int horas, String nomeDiscente) throws InvalidDateException
 	{
 		this.codigoDocente = codigoD;
 		this.matriculaDiscente = mat;
@@ -30,9 +32,14 @@ public class OrientacaoPos implements Comparable<OrientacaoPos>, Serializable
 		this.cargaHoraria = horas;
 		this.nomeDiscente = nomeDiscente;
 		String[] datas = data.split("/");
+		Calendar today = Calendar.getInstance();
 		Calendar c = Calendar.getInstance();
 		c.set(Integer.parseInt(datas[2]), Integer.parseInt(datas[1])-1, 
 						 Integer.parseInt(datas[0]));
+		if(today.before(c))
+		{
+			throw new InvalidDateException(nomeDiscente, c.getTime());
+		}
 		this.dataIngresso = c.getTime();
 	}
 	

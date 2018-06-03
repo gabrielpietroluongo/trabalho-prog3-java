@@ -389,7 +389,7 @@ public class Dados implements Serializable
 	 * ORIENTAÇÕES PÓS GRADUAÇÃO
 	 */
 	
-	public void CarregaOrientacoesPos(String path) throws IOException
+	public void CarregaOrientacoesPos(String path) throws IOException, NumberFormatException, InvalidDateException
 	{
 		Vector<String[]> orientacoesData = CSV.load_data(path);
 		for (String[] line : orientacoesData)
@@ -398,7 +398,7 @@ public class Dados implements Serializable
 		}
 	}
 	
-	public void AdicionaOrientacaoPos(String[] params)
+	public void AdicionaOrientacaoPos(String[] params) throws NumberFormatException, InvalidDateException
 	{
 		/*
 		 * Params:

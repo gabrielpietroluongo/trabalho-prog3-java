@@ -4,8 +4,9 @@ import util.*;
 
 import java.io.IOException;
 
-import sistema.*;
+import sistema.Dados;
 import exceptions.InvalidCodeException;
+import exceptions.InvalidDateException;
 import exceptions.RepeatedCodeException;
 
 public class Main
@@ -46,6 +47,10 @@ public class Main
 			System.out.println(e);
 		}
 		catch(InvalidCodeException e)
+		{
+			System.out.println(e);
+		}
+		catch(InvalidDateException e)
 		{
 			System.out.println(e);
 		}

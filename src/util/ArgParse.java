@@ -3,6 +3,7 @@ package util;
 import java.io.IOException;
 
 import exceptions.InvalidCodeException;
+import exceptions.InvalidDateException;
 import exceptions.RepeatedCodeException;
 import sistema.*;
 
@@ -90,7 +91,7 @@ public abstract class ArgParse
 		fname_OriPosGrad = op;
 	}
 	
-	public static void LoadData(Dados d) throws RepeatedCodeException, IOException, InvalidCodeException
+	public static void LoadData(Dados d) throws RepeatedCodeException, IOException, InvalidCodeException, NumberFormatException, InvalidDateException
 	{
 		d.Carrega_Discentes(fname_Discentes);
 		d.Carrega_Docentes(fname_Docentes);
