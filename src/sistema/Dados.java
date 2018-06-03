@@ -329,7 +329,7 @@ public class Dados implements Serializable
 	 * ORIENTAÇÕES GRADUAÇÃO
 	 */
 	
-	public void CarregaOrientacoesGrad(String path) throws IOException
+	public void CarregaOrientacoesGrad(String path) throws IOException, InvalidCodeException
 	{
 		Vector<String[]> orientacoesData = CSV.load_data(path);
 		for (String[] line : orientacoesData)
@@ -338,7 +338,7 @@ public class Dados implements Serializable
 		}
 	}
 	
-	public void AdicionaOrientacaoGrad(String[] params)
+	public void AdicionaOrientacaoGrad(String[] params) throws InvalidCodeException
 	{
 		/*
 		 * Params:
@@ -347,9 +347,14 @@ public class Dados implements Serializable
 		 * 2 - int codigoCurso
 		 * 3 - int horas
 		 */
+		Docente d = getDocenteById(Integer.parseInt(params[0]));
+		if(d == null)
+		{
+			String nome = getDiscenteByMat(params[1]).getNome();
+			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_ORIENTACAO, nome, params[0]);
+		}
 		AdicionaOrientacaoGrad(new OrientacaoGrad(Integer.parseInt(params[0]), params[1],
 							   Integer.parseInt(params[2]), Integer.parseInt(params[3])));
-		Docente d = getDocenteById(Integer.parseInt(params[0]));
 		d.adicionaHorasOrientacao(Integer.parseInt(params[3]));
 		
 	}
