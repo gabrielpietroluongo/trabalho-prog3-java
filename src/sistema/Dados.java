@@ -210,7 +210,7 @@ public class Dados implements Serializable
 	 * PRODUÇÕES
 	 */
 	
-	public void Carrega_Producoes(String path) throws IOException, InvalidCodeException
+	public void Carrega_Producoes(String path) throws IOException, InvalidCodeException, ClassInconsistencyException
 	{
 		Vector<String[]> producoes_data = CSV.load_data(path);
 		for(String[] line : producoes_data)
@@ -224,7 +224,7 @@ public class Dados implements Serializable
 		Producoes.add(p);
 	}
 	
-	public void Adiciona_Producao(String[] params) throws InvalidCodeException
+	public void Adiciona_Producao(String[] params) throws InvalidCodeException, ClassInconsistencyException
 	{
 		/*
 		 * Params:
@@ -237,10 +237,17 @@ public class Dados implements Serializable
 		{
 			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_PUBLICACAO, params[1], String.valueOf(params[0]));
 		}
+		if(params.length == 4)
+		{
+			if(params[2].equals("X") && params[3].equals("X"))
+			{
+				throw new ClassInconsistencyException(params[0], params[1]);
+			}
+		}
 		// TODO refatorar isso
 		if(params.length == 3 && !params[2].equals(" "))
 		{
-			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], params[2]));
+			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], true));
 			d.adicionaProducaoQualificada();
 		}
 		else
