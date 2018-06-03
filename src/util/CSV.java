@@ -29,7 +29,7 @@ public abstract class CSV
 		return parsedData;
 	}
 	
-	public static Vector<String[]> load_data(String file) throws IOException
+	public static Vector<String[]> loadData(String file) throws IOException
 	{
 		Vector<String[]> lines = new Vector<String[]>();
 		BufferedReader br = new BufferedReader(new FileReader(file));

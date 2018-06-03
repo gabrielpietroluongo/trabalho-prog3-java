@@ -26,18 +26,19 @@ public class Main
 			else if(ArgParse.bWriteOnly)
 			{
 				d = (Dados) Serialization.loadData("dados.dat");
-				d.gera_pad_e_salva();
-				d.gera_rha_e_salva();
-				d.gera_alocacao_e_salva();
-				d.gera_ppg_e_salva();
+				d.geraPADESalva();
+				d.geraRHAESalva();
+				d.geraAlocacaoESalva();
+				d.geraPPGESalva();
 				System.out.println("Execução bem sucedida");
 				return;
 			}
+			// Execução "normal"
 			ArgParse.LoadData(d);
-			d.gera_pad_e_salva();
-			d.gera_rha_e_salva();
-			d.gera_alocacao_e_salva();
-			d.gera_ppg_e_salva();
+			d.geraPADESalva();
+			d.geraRHAESalva();
+			d.geraAlocacaoESalva();
+			d.geraPPGESalva();
 			System.out.println("Execução bem sucedida");
 		}
 		catch(RepeatedCodeException e)
@@ -66,7 +67,6 @@ public class Main
 		}
 		catch(Exception e)
 		{
-			System.out.println("UNHANDLED EXCEPTION CAUGHT!");
 			e.printStackTrace();
 			System.out.println("Execução com falha");
 		}

@@ -94,11 +94,11 @@ public abstract class ArgParse
 	
 	public static void LoadData(Dados d) throws RepeatedCodeException, IOException, InvalidCodeException, NumberFormatException, InvalidDateException, ClassInconsistencyException
 	{
-		d.Carrega_Discentes(fname_Discentes);
-		d.Carrega_Docentes(fname_Docentes);
-		d.Carrega_Producoes(fname_Producoes);
-		d.Carrega_Cursos(fname_Cursos);
-		d.Carrega_Disciplinas(fname_Disciplinas);
+		d.carregaDiscentes(fname_Discentes);
+		d.carregaDocentes(fname_Docentes);
+		d.carregaProducoes(fname_Producoes);
+		d.carregaCursos(fname_Cursos);
+		d.carregaDisciplinas(fname_Disciplinas);
 		d.CarregaOrientacoesGrad(fname_OriGrad);
 		d.CarregaOrientacoesPos(fname_OriPosGrad);
 	}

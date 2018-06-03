@@ -27,7 +27,7 @@ public class Dados implements Serializable
 	public List<OrientacaoGrad> OrientacoesGrad = new ArrayList<OrientacaoGrad>();
 	public List<OrientacaoPos> OrientacoesPos = new ArrayList<OrientacaoPos>();
 	
-	public void gera_pad_e_salva() throws IOException
+	public void geraPADESalva() throws IOException
 	{
 		Collections.sort(this.Docentes);
 		CSV.setOutputFile("1-pad.csv");
@@ -40,7 +40,7 @@ public class Dados implements Serializable
 		CSV.closeOutputFile();
 	}
 	
-	public void gera_rha_e_salva() throws IOException
+	public void geraRHAESalva() throws IOException
 	{
 		// Classe auxiliar para organizar (ordenar) as saídas
 		class OutputData implements Comparable<OutputData>
@@ -123,7 +123,7 @@ public class Dados implements Serializable
 		CSV.closeOutputFile();
 	}
 
-	public void gera_alocacao_e_salva() throws IOException
+	public void geraAlocacaoESalva() throws IOException
 	{
 		Collections.sort(this.Disciplinas);
 		CSV.setOutputFile("3-alocacao.csv");
@@ -135,7 +135,7 @@ public class Dados implements Serializable
 		CSV.closeOutputFile();
 	}
 	
-	public void gera_ppg_e_salva() throws IOException
+	public void geraPPGESalva() throws IOException
 	{
 		Collections.sort(this.OrientacoesPos);
 		CSV.setOutputFile("4-ppg.csv");
@@ -147,25 +147,20 @@ public class Dados implements Serializable
 		CSV.closeOutputFile();
 	}
 	
-	public Dados()
-	{
-		
-	}
-	
 	/*
 	 * DOCENTES
 	 */
 	
-	public void Carrega_Docentes(String path) throws IOException, NumberFormatException, RepeatedCodeException
+	public void carregaDocentes(String path) throws IOException, NumberFormatException, RepeatedCodeException
 	{
-		Vector<String[]> docentes_data = CSV.load_data(path);
+		Vector<String[]> docentes_data = CSV.loadData(path);
 		for (String[] line : docentes_data)
 		{
-			this.Adiciona_Docente(line);
+			this.adicionaDocente(line);
 		}
 	}
 	
-	public void Adiciona_Docente(Docente d) throws RepeatedCodeException
+	public void adicionaDocente(Docente d) throws RepeatedCodeException
 	{
 		if(this.Docentes.contains(d))
 		{
@@ -174,25 +169,25 @@ public class Dados implements Serializable
 		Docentes.add(d);
 	}
 	
-	public void Adiciona_Docente(String[] params) throws NumberFormatException, RepeatedCodeException
+	public void adicionaDocente(String[] params) throws NumberFormatException, RepeatedCodeException
 	{
-		this.Adiciona_Docente(new Docente(Integer.parseInt(params[0]), params[1], params[2]));
+		this.adicionaDocente(new Docente(Integer.parseInt(params[0]), params[1], params[2]));
 	}
 	
 	/*
 	 * DISCENTES
 	 */
 	
-	public void Carrega_Discentes(String path) throws IOException, NumberFormatException, RepeatedCodeException
+	public void carregaDiscentes(String path) throws IOException, NumberFormatException, RepeatedCodeException
 	{
-		Vector<String[]> discentes_data = CSV.load_data(path);
+		Vector<String[]> discentes_data = CSV.loadData(path);
 		for (String[] line : discentes_data)
 		{
-			this.Adiciona_Discente(line);
+			this.adicionaDiscente(line);
 		}
 	}
 	
-	public void Adiciona_Discente(Discente d) throws RepeatedCodeException
+	public void adicionaDiscente(Discente d) throws RepeatedCodeException
 	{
 		if(this.Discentes.contains(d))
 		{
@@ -201,30 +196,30 @@ public class Dados implements Serializable
 		Discentes.add(d);
 	}
 	
-	public void Adiciona_Discente(String[] params) throws NumberFormatException, RepeatedCodeException
+	public void adicionaDiscente(String[] params) throws NumberFormatException, RepeatedCodeException
 	{
-		Adiciona_Discente(new Discente(params[0], params[1], Integer.parseInt(params[2])));
+		adicionaDiscente(new Discente(params[0], params[1], Integer.parseInt(params[2])));
 	}
 	
 	/*
 	 * PRODUÇÕES
 	 */
 	
-	public void Carrega_Producoes(String path) throws IOException, InvalidCodeException, ClassInconsistencyException
+	public void carregaProducoes(String path) throws IOException, InvalidCodeException, ClassInconsistencyException
 	{
-		Vector<String[]> producoes_data = CSV.load_data(path);
+		Vector<String[]> producoes_data = CSV.loadData(path);
 		for(String[] line : producoes_data)
 		{
-			this.Adiciona_Producao(line);
+			this.adicionaProducao(line);
 		}
 	}
 	
-	public void Adiciona_Producao(Producao p)
+	public void adicionaProducao(Producao p)
 	{
 		Producoes.add(p);
 	}
 	
-	public void Adiciona_Producao(String[] params) throws InvalidCodeException, ClassInconsistencyException
+	public void adicionaProducao(String[] params) throws InvalidCodeException, ClassInconsistencyException
 	{
 		/*
 		 * Params:
@@ -244,7 +239,6 @@ public class Dados implements Serializable
 				throw new ClassInconsistencyException(params[0], params[1]);
 			}
 		}
-		// TODO refatorar isso
 		if(params.length == 3 && !params[2].equals(" "))
 		{
 			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], true));
@@ -261,7 +255,7 @@ public class Dados implements Serializable
 	 * CURSOS
 	 */
 	
-	public void Adiciona_Curso(Curso c) throws RepeatedCodeException
+	public void adicionaCurso(Curso c) throws RepeatedCodeException
 	{
 		if(this.Cursos.contains(c))
 		{
@@ -270,24 +264,24 @@ public class Dados implements Serializable
 		this.Cursos.add(c);
 	}
 	
-	public void Adiciona_Curso(String[] params) throws NumberFormatException, RepeatedCodeException
+	public void adicionaCurso(String[] params) throws NumberFormatException, RepeatedCodeException
 	{
 		if(params.length == 3)
 		{
-			this.Adiciona_Curso(new Curso(Integer.parseInt(params[0]), params[1], true));
+			this.adicionaCurso(new Curso(Integer.parseInt(params[0]), params[1], true));
 		}
 		else
 		{
-			this.Adiciona_Curso(new Curso(Integer.parseInt(params[0]), params[1], false));
+			this.adicionaCurso(new Curso(Integer.parseInt(params[0]), params[1], false));
 		}
 	}
 	
-	public void Carrega_Cursos(String path) throws IOException, NumberFormatException, RepeatedCodeException
+	public void carregaCursos(String path) throws IOException, NumberFormatException, RepeatedCodeException
 	{
-		Vector<String[]> cursos_data = CSV.load_data(path);
+		Vector<String[]> cursos_data = CSV.loadData(path);
 		for (String[] line : cursos_data)
 		{
-			this.Adiciona_Curso(line);
+			this.adicionaCurso(line);
 		}
 	}
 	
@@ -295,7 +289,7 @@ public class Dados implements Serializable
 	 * DISCIPLINAS
 	 */
 	
-	public void Adiciona_Disciplina(Disciplina d) throws RepeatedCodeException
+	public void adicionaDisciplina(Disciplina d) throws RepeatedCodeException
 	{
 		if(this.Disciplinas.contains(d))
 		{
@@ -304,7 +298,7 @@ public class Dados implements Serializable
 		this.Disciplinas.add(d);
 	}
 	
-	public void Adiciona_Disciplina(String[] params) throws RepeatedCodeException, InvalidCodeException
+	public void adicionaDisciplina(String[] params) throws RepeatedCodeException, InvalidCodeException
 	{
 		/*
 		 * Params:
@@ -327,7 +321,7 @@ public class Dados implements Serializable
 			throw new InvalidCodeException(InvalidCodeException.Tipo.CURSO_DISCIPLINA,
 										   params[1], String.valueOf(params[5]));
 		}
-		this.Adiciona_Disciplina(new Disciplina(params[0], params[1],
+		this.adicionaDisciplina(new Disciplina(params[0], params[1],
 								Integer.parseInt(params[2]), 
 								Integer.parseInt(params[3]), 
 								Integer.parseInt(params[4]), 
@@ -339,12 +333,12 @@ public class Dados implements Serializable
 		
 	}
 	
-	public void Carrega_Disciplinas(String path) throws RepeatedCodeException, IOException, InvalidCodeException
+	public void carregaDisciplinas(String path) throws RepeatedCodeException, IOException, InvalidCodeException
 	{
-		Vector<String[]> disciplinas_data = CSV.load_data(path);
+		Vector<String[]> disciplinas_data = CSV.loadData(path);
 		for (String[] line : disciplinas_data)
 		{
-			this.Adiciona_Disciplina(line);
+			this.adicionaDisciplina(line);
 		}
 	}
 	
@@ -354,7 +348,7 @@ public class Dados implements Serializable
 	
 	public void CarregaOrientacoesGrad(String path) throws IOException, InvalidCodeException
 	{
-		Vector<String[]> orientacoesData = CSV.load_data(path);
+		Vector<String[]> orientacoesData = CSV.loadData(path);
 		for (String[] line : orientacoesData)
 		{
 			AdicionaOrientacaoGrad(line);
@@ -398,7 +392,7 @@ public class Dados implements Serializable
 	
 	public void CarregaOrientacoesPos(String path) throws IOException, NumberFormatException, InvalidDateException
 	{
-		Vector<String[]> orientacoesData = CSV.load_data(path);
+		Vector<String[]> orientacoesData = CSV.loadData(path);
 		for (String[] line : orientacoesData)
 		{
 			AdicionaOrientacaoPos(line);
