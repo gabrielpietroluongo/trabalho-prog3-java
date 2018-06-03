@@ -210,7 +210,7 @@ public class Dados implements Serializable
 	 * PRODUÇÕES
 	 */
 	
-	public void Carrega_Producoes(String path) throws IOException
+	public void Carrega_Producoes(String path) throws IOException, InvalidCodeException
 	{
 		Vector<String[]> producoes_data = CSV.load_data(path);
 		for(String[] line : producoes_data)
@@ -224,9 +224,19 @@ public class Dados implements Serializable
 		Producoes.add(p);
 	}
 	
-	public void Adiciona_Producao(String[] params)
+	public void Adiciona_Producao(String[] params) throws InvalidCodeException
 	{
+		/*
+		 * Params:
+		 * 0 - int Codigo
+		 * 1 - String Titulo
+		 * 2 - "String" qualificada
+		 */
 		Docente d = this.getDocenteById(Integer.parseInt(params[0]));
+		if(d == null)
+		{
+			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_PUBLICACAO, params[1], String.valueOf(params[0]));
+		}
 		if(params.length == 3 && !params[2].equals(" "))
 		{
 			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], params[2]));
