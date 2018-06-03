@@ -237,6 +237,7 @@ public class Dados implements Serializable
 		{
 			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_PUBLICACAO, params[1], String.valueOf(params[0]));
 		}
+		// TODO refatorar isso
 		if(params.length == 3 && !params[2].equals(" "))
 		{
 			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], params[2]));
@@ -311,9 +312,14 @@ public class Dados implements Serializable
 		if (d == null)
 		{
 			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_DISCIPLINA, 
-										   String.valueOf(params[2]), String.valueOf(params[1]));
+										   String.valueOf(params[2]), params[1]);
 		}
 		Curso c = getCursoById(Integer.parseInt(params[5]));
+		if(c == null)
+		{
+			throw new InvalidCodeException(InvalidCodeException.Tipo.CURSO_DISCIPLINA,
+										   params[1], String.valueOf(params[5]));
+		}
 		this.Adiciona_Disciplina(new Disciplina(params[0], params[1],
 								Integer.parseInt(params[2]), 
 								Integer.parseInt(params[3]), 
@@ -358,10 +364,15 @@ public class Dados implements Serializable
 		 * 3 - int horas
 		 */
 		Docente d = getDocenteById(Integer.parseInt(params[0]));
+		Curso c = getCursoById(Integer.parseInt(params[2]));
+		String nome = getDiscenteByMat(params[1]).getNome();
 		if(d == null)
 		{
-			String nome = getDiscenteByMat(params[1]).getNome();
 			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_ORIENTACAO, nome, params[0]);
+		}
+		if(c == null)
+		{
+			throw new InvalidCodeException(InvalidCodeException.Tipo.CURSO_ORIENTACAO, nome, params[2]);
 		}
 		AdicionaOrientacaoGrad(new OrientacaoGrad(Integer.parseInt(params[0]), params[1],
 							   Integer.parseInt(params[2]), Integer.parseInt(params[3])));
