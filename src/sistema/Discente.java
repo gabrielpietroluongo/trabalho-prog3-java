@@ -29,7 +29,7 @@ public class Discente implements Serializable
 	public boolean equals(Object o)
 	{
 		Discente d = (Discente) o;
-		return d.matricula == this.matricula;
+		return d.matricula.equals(this.matricula);
 	}
 	
 	public String getMat() { return this.matricula; }
