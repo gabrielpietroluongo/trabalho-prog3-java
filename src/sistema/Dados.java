@@ -32,7 +32,7 @@ public class Dados implements Serializable
 		Collections.sort(this.Docentes);
 		CSV.setOutputFile("1-pad.csv");
 		CSV.save(new String[] {"Docente", "Departamento", "Horas Semanais Aula", "Horas Semestrais Aula", 
-							   "Horas Semanais Orientação", "Horas Semestrais Orientação", "Produções Qualificadas", "Produções Não Qualificadas"});
+							   "Horas Semanais Orientação", "Produções Qualificadas", "Produções Não Qualificadas"});
 		for (Docente d : Docentes)
 		{
 			CSV.save(d.getCSVData());
