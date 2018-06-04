@@ -230,7 +230,7 @@ public class Dados implements Serializable
 		Docente d = this.getDocenteById(Integer.parseInt(params[0]));
 		if(d == null)
 		{
-			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_PUBLICACAO, params[1], String.valueOf(params[0]));
+			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_PUBLICACAO, String.valueOf(params[0]), params[1]);
 		}
 		if(params.length == 3 && !params[2].equals(" "))
 		{
@@ -323,7 +323,7 @@ public class Dados implements Serializable
 		if(c == null)
 		{
 			throw new InvalidCodeException(InvalidCodeException.Tipo.CURSO_DISCIPLINA,
-										   params[1], String.valueOf(params[5]));
+										   String.valueOf(params[5]), params[1]);
 		}
 		this.adicionaDisciplina(new Disciplina(params[0], params[1],
 								Integer.parseInt(params[2]), 
@@ -377,7 +377,7 @@ public class Dados implements Serializable
 		Curso c = getCursoById(Integer.parseInt(params[2]));
 		if(c == null)
 		{
-			throw new InvalidCodeException(InvalidCodeException.Tipo.CURSO_ORIENTACAO, nome, params[2]);
+			throw new InvalidCodeException(InvalidCodeException.Tipo.CURSO_ORIENTACAO, params[2], nome);
 		}
 		AdicionaOrientacaoGrad(new OrientacaoGrad(Integer.parseInt(params[0]), params[1],
 							   Integer.parseInt(params[2]), Integer.parseInt(params[3])));
