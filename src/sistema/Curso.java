@@ -21,6 +21,8 @@ public class Curso implements Serializable
 	
 	public String getNome() { return this.nome; }
 	
+	
+	//Descontinuado, remover?
 	public Curso(int codigo, String nome, String graduacao, String posGraduacao)
 	{
 		this.codigo = codigo;
@@ -48,6 +50,13 @@ public class Curso implements Serializable
 	public String toString()
 	{
 		return "Nome do curso: " + this.nome + "\nCódigo do curso: " + this.codigo + "\nÉ graduação: " + this.graduacao;
+	}
+	
+	@Override
+	public boolean equals(Object o)
+	{
+		Curso c = (Curso) o;
+		return this.codigo == c.codigo;
 	}
 	
 	public void adicionaHorasADocente(int codigoDocente, int horas)
