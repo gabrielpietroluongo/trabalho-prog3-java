@@ -23,16 +23,16 @@ public class RepeatedCodeException extends Exception
 		switch(this.tipo)
 		{
 			case DOCENTE:
-				msg = "Código repetido para docente: " + code;
+				msg = "Código repetido para docente: " + code + ".";
 				break;
 			case DISCENTE:
-				msg = "Código repetido para discente: " + code;
+				msg = "Código repetido para discente: " + code + ".";
 				break;
 			case CURSO:
-				msg = "Código repetido para curso: " + code;
+				msg = "Código repetido para curso: " + code + ".";
 				break;
 			case DISCIPLINA:
-				msg = "Código repetido para disciplina: " + code;
+				msg = "Código repetido para disciplina: " + code + ".";
 				break;
 		}
 		this.message = msg;

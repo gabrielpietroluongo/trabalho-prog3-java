@@ -14,7 +14,7 @@ public class InvalidDateException extends Exception
 	
 	public InvalidDateException(String nome, Date date)
 	{
-		this.message = "Data de ingresso do aluno \"" + nome + "\" está no futuro: " + formatter.format(date);
+		this.message = "Data de ingresso do aluno \"" + nome + "\" está no futuro: " + formatter.format(date) + ".";
 	}
 	
 	@Override
