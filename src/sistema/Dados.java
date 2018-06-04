@@ -372,7 +372,7 @@ public class Dados implements Serializable
 		String nome = getDiscenteByMat(params[1]).getNome();
 		if(d == null)
 		{
-			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_ORIENTACAO, nome, params[0]);
+			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_ORIENTACAO, params[0], nome);
 		}
 		Curso c = getCursoById(Integer.parseInt(params[2]));
 		if(c == null)
@@ -502,7 +502,7 @@ public class Dados implements Serializable
 				return d;
 			}
 		}
-		System.out.println("Erro: Discente de matrícula" + mat + " não encontrado");
+		//System.out.println("Erro: Discente de matrícula" + mat + " não encontrado");
 		return null;
 	}
 	
@@ -515,7 +515,7 @@ public class Dados implements Serializable
 				return d;
 			}
 		}
-		System.out.println("Erro: Docente de id " + id + " não encontrado");
+		//System.out.println("Erro: Docente de id " + id + " não encontrado");
 		return null;
 	}
 	
