@@ -394,7 +394,7 @@ public class Dados implements Serializable
 	 * ORIENTAÇÕES PÓS GRADUAÇÃO
 	 */
 	
-	public void CarregaOrientacoesPos(String path) throws IOException, NumberFormatException, InvalidDateException
+	public void CarregaOrientacoesPos(String path) throws IOException, NumberFormatException, InvalidDateException, InvalidCodeException
 	{
 		Vector<String[]> orientacoesData = CSV.loadData(path);
 		for (String[] line : orientacoesData)
@@ -403,7 +403,7 @@ public class Dados implements Serializable
 		}
 	}
 	
-	public void AdicionaOrientacaoPos(String[] params) throws NumberFormatException, InvalidDateException
+	public void AdicionaOrientacaoPos(String[] params) throws NumberFormatException, InvalidDateException, InvalidCodeException
 	{
 		/*
 		 * Params:
@@ -415,6 +415,10 @@ public class Dados implements Serializable
 		 */
 		Discente dis = getDiscenteByMat(params[1]);
 		Docente doc = getDocenteById(Integer.parseInt(params[0]));
+		if(doc == null)
+		{
+			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_ORIENTACAO, params[0], dis.getNome());
+		}
 		AdicionaOrientacaoPos(new OrientacaoPos(Integer.parseInt(params[0]), params[1], params[2],
 							  params[3], Integer.parseInt(params[4]), dis.getNome()));
 		doc.adicionaHorasOrientacao(Integer.parseInt(params[4]));
