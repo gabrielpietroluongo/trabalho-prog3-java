@@ -232,13 +232,6 @@ public class Dados implements Serializable
 		{
 			throw new InvalidCodeException(InvalidCodeException.Tipo.DOCENTE_PUBLICACAO, params[1], String.valueOf(params[0]));
 		}
-		if(params.length == 4)
-		{
-			if(params[2].equals("X") && params[3].equals("X"))
-			{
-				throw new ClassInconsistencyException(params[0], params[1]);
-			}
-		}
 		if(params.length == 3 && !params[2].equals(" "))
 		{
 			Producoes.add(new Producao(Integer.parseInt(params[0]), params[1], true));
@@ -264,8 +257,19 @@ public class Dados implements Serializable
 		this.Cursos.add(c);
 	}
 	
-	public void adicionaCurso(String[] params) throws NumberFormatException, RepeatedCodeException
+	public void adicionaCurso(String[] params) throws NumberFormatException, RepeatedCodeException, ClassInconsistencyException
 	{
+		if(params.length == 4)
+		{
+			if(params[2].equals(params[3]))
+			{
+				throw new ClassInconsistencyException(params[0], params[1]);
+			}
+		}
+		if(params.length < 3)
+		{
+			throw new ClassInconsistencyException(params[0], params[1]);
+		}
 		if(params.length == 3)
 		{
 			this.adicionaCurso(new Curso(Integer.parseInt(params[0]), params[1], true));
@@ -276,7 +280,7 @@ public class Dados implements Serializable
 		}
 	}
 	
-	public void carregaCursos(String path) throws IOException, NumberFormatException, RepeatedCodeException
+	public void carregaCursos(String path) throws IOException, NumberFormatException, RepeatedCodeException, ClassInconsistencyException
 	{
 		Vector<String[]> cursos_data = CSV.loadData(path);
 		for (String[] line : cursos_data)
