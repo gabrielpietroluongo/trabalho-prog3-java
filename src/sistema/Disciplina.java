@@ -57,7 +57,7 @@ public class Disciplina implements Comparable<Disciplina>, Serializable
 		int cmp = coll.compare(this.nomeDocente, arg0.nomeDocente);
 		if (cmp == 0)
 		{
-			return coll.compare(this.codigoAlfa, this.codigoAlfa);
+			return coll.compare(this.codigoAlfa, arg0.codigoAlfa);
 		}
 		return cmp;
 	}
