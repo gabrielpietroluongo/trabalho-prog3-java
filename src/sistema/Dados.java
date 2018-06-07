@@ -19,13 +19,13 @@ public class Dados implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public List<Docente> Docentes = new ArrayList<Docente>();
-	public List<Discente> Discentes = new ArrayList<Discente>();
-	public List<Producao> Producoes = new ArrayList<Producao>();
-	public List<Curso> Cursos = new ArrayList<Curso>();
-	public List<Disciplina> Disciplinas = new ArrayList<Disciplina>();
-	public List<OrientacaoGrad> OrientacoesGrad = new ArrayList<OrientacaoGrad>();
-	public List<OrientacaoPos> OrientacoesPos = new ArrayList<OrientacaoPos>();
+	private List<Docente> Docentes = new ArrayList<Docente>();
+	private List<Discente> Discentes = new ArrayList<Discente>();
+	private List<Producao> Producoes = new ArrayList<Producao>();
+	private List<Curso> Cursos = new ArrayList<Curso>();
+	private List<Disciplina> Disciplinas = new ArrayList<Disciplina>();
+	private List<OrientacaoGrad> OrientacoesGrad = new ArrayList<OrientacaoGrad>();
+	private List<OrientacaoPos> OrientacoesPos = new ArrayList<OrientacaoPos>();
 	
 	public void geraPADESalva() throws IOException
 	{

@@ -13,11 +13,11 @@ public class Docente implements Comparable<Docente>, Serializable
 	private final int codigo;
 	private final String nome;
 	private final String departamento;
-	int horasAulaSemanais = 0;
-	int horasAulaSemestrais = 0;
-	int horasOrientacaoSemanais = 0;	
-	int producoesQualificadas = 0;
-	int producoesNaoQualificadas = 0;
+	private int horasAulaSemanais = 0;
+	private int horasAulaSemestrais = 0;
+	private int horasOrientacaoSemanais = 0;	
+	private int producoesQualificadas = 0;
+	private int producoesNaoQualificadas = 0;
 	
 	
 	public Docente(int codigo, String nome, String departamento)
