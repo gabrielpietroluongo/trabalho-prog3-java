@@ -21,22 +21,23 @@ public class InvalidCodeException extends Exception
 	{
 		this.tipo = t;
 		String msg = "";
+		long code_conv = Long.parseLong(code);
 		switch(this.tipo)
 		{
 			case DOCENTE_DISCIPLINA:
-				msg = "Código de docente inválido na disciplina \"" + name + "\": " + code + ".";
+				msg = "Código de docente inválido na disciplina \"" + name + "\": " + code_conv + ".";
 				break;
 			case DOCENTE_ORIENTACAO:
-				msg = "Código de docente inválido na orientação do aluno \"" + name + "\": " + code + ".";
+				msg = "Código de docente inválido na orientação do aluno \"" + name + "\": " + code_conv + ".";
 				break;
 			case DOCENTE_PUBLICACAO:
-				msg = "Código de docente inválido na publicação \"" + name + "\": " + code + ".";
+				msg = "Código de docente inválido na publicação \"" + name + "\": " + code_conv + ".";
 				break;
 			case CURSO_ORIENTACAO:
-				msg = "Código de curso inválido na orientação do aluno \"" + name + "\": " + code + ".";
+				msg = "Código de curso inválido na orientação do aluno \"" + name + "\": " + code_conv + ".";
 				break;
 			case CURSO_DISCIPLINA:
-				msg = "Código de curso inválido na disciplina \"" + name + "\": " + code + ".";
+				msg = "Código de curso inválido na disciplina \"" + name + "\": " + code_conv + ".";
 				break;
 		}
 		this.message = msg;
