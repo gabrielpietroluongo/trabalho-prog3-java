@@ -40,6 +40,12 @@ public abstract class CSV
 		{
 			String [] line_data;
 			line_data = CSV.parse(line, ";");
+			for(int i = 0; i < line_data.length; i++)
+			{
+				if(line_data[i].equals(" "))
+					continue;
+				line_data[i] = line_data[i].trim();
+			}
 			lines.addElement(line_data);
 		}
 		br.close();
